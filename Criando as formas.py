@@ -112,9 +112,17 @@ option_menu = ttk.OptionMenu(frame, tipo_figura_var,
                              'Linha', 'Linha', 'Rabisco', "Circulo", "Oval", "Retângulo", "Quadrado") #aq linha é repetida pq é exigido deixar a opção padrão duas vezes
 option_menu.grid(column=1, row=0, sticky=W, **paddings)
 
+#*****Menu de cores*****#
+label_cor = ttk.Label(frame, text="Cores")
+cores_var = StringVar(root) #guarda a cor selecionada
+option_menu_cores = ttk.OptionMenu(frame, cores_var,
+                                   "Preto", "Preto", "Vermelho", "Verde", "Azul", "Amarelo", "Rosa", "Cor de burro quando foge")
+option_menu_cores.grid(column=2, row=0, sticky=W, **paddings)
+
+#*******************************************#
 # Área de desenho
 canvas = Canvas(frame, bg='white', width=600, height=600)
-canvas.grid(column=0, row=1, columnspan=2, sticky=W, **paddings)
+canvas.grid(column=0, row=1, columnspan=3, sticky=W, **paddings)
 
 frame.pack()
 

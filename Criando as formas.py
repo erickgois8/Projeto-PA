@@ -96,24 +96,23 @@ def incompleta(figura):
 figuras = []       # Todas as figuras desenhadas
 figura_nova = None # Figura que está sendo desenhada, mas ainda não foi incluída em figuras
 
-root = Tk()
+root = Tk() #isso aq é o "nome" da janela, então se quiserem mudar algo na janela, chamem esse
 frame = Frame(root)
 
 # Widgets arranjados com Layout grid dentro de frame
 paddings = {'padx': 5, 'pady': 5} 
 
 # label
-label = ttk.Label(frame,  text='Linha, Circulo, Oval, Retângulo, Quadrado ou Rabisco:')
+label = ttk.Label(frame,  text='Minha nova arte')
 label.grid(column=0, row=0, sticky=W, **paddings)
 
-# option menu
+#*****Menu de Figuras*****#
 tipo_figura_var = StringVar(root) # Guarda o tipo de figura selecionado no option menu (já vou pegar o embalo e fazer quadrado tb)
 option_menu = ttk.OptionMenu(frame, tipo_figura_var,
                              'Linha', 'Linha', 'Rabisco', "Circulo", "Oval", "Retângulo", "Quadrado") #aq linha é repetida pq é exigido deixar a opção padrão duas vezes
 option_menu.grid(column=1, row=0, sticky=W, **paddings)
 
 #*****Menu de cores*****#
-label_cor = ttk.Label(frame, text="Cores")
 cores_var = StringVar(root) #guarda a cor selecionada
 option_menu_cores = ttk.OptionMenu(frame, cores_var,
                                    "Preto", "Preto", "Vermelho", "Verde", "Azul", "Amarelo", "Rosa", "Cor de burro quando foge")

@@ -2,13 +2,13 @@ from tkinter import *
 from tkinter import ttk
 
 dic_de_cores = {
-    "Sem preenchimento": "",
-    "Preto": "black",
-    "Branco": "white",
-    "Vermelho": "red",
-    "Verde": "green",
-    "Azul": "blue",
-    "Cor de burro quando foge":"#6F752F" 
+        "Sem preenchimento": "",
+        "Preto": "black",
+        "Branco": "white",
+        "Vermelho": "red",
+        "Verde": "green",
+        "Azul": "blue",
+        "Cor de burro quando foge":"#6F752F" 
 }
 
 

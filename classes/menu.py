@@ -206,6 +206,29 @@ class Menu(): #podemos dar um nome melhor dps
             command=lambda: self.selecionaCor(None, self.modo_cor))
         self.btn_sem_preenchimento.place(x=90, y=835, width=24, height=24)
 
+        # Botão desfazer
+        self.img_btn_desfazer = PhotoImage(file="images/desfazer.png")
+        self.btn_desfazer = Button(
+            self.frame_lateral,
+            image=self.img_btn_desfazer,
+            bg=self.cinza_medio,
+            relief=RAISED,
+            activebackground=self.cinza_escuro,
+            border=1,
+            command=lambda: self.desfazer())
+        self.btn_desfazer.place(x=15, y=950, width=32, height=32)
+
+        # Botão refazer
+        self.img_btn_refazer = PhotoImage(file="images/refazer.png")
+        self.btn_refazer = Button(
+            self.frame_lateral,
+            image=self.img_btn_refazer,
+            bg=self.cinza_medio,
+            relief=RAISED,
+            activebackground=self.cinza_escuro,
+            border=1,
+            command=lambda: self.refazer())
+        self.btn_refazer.place(x=70, y=950, width=32, height=32)
 
 # ----- Botões de cores ----- #
     def widgets_cores(self):

@@ -160,6 +160,53 @@ class Menu(): #podemos dar um nome melhor dps
             command=lambda: self.selecionaFerramenta("retangulo"))
         self.botao_retangulo.place(x=45, y=125, width=32, height=32)
 
+        # Figuras com borda colorida
+        self.lbl_figuras_borda = Label(
+            self.frame_lateral,
+            text="Cor da borda",
+            bg=self.cinza_medio,
+            fg=self.preto,
+            font=("Arial", 7, "bold"))
+        self.lbl_figuras_borda.place(x=28, y=754)
+        self.btn_fig_borda = Button(
+            self.frame_lateral,
+            bg=self.cinza_medio,
+            relief=RAISED,
+            activebackground=self.cinza_escuro,
+            border=1,
+            command=lambda: self.selecionaModoCor("borda"))
+        self.btn_fig_borda.place(x=20, y=770, width=80, height=32)
+
+        # Figuras preenchidas com cores
+        self.lbl_figuras = Label(
+            self.frame_lateral,
+            text="Cor do preenchimento",
+            bg=self.cinza_medio,
+            fg=self.preto,
+            font=("Arial", 7, "bold"))
+        self.lbl_figuras.place(x=8, y=814)
+        self.btn_fig_preenchida = Button(
+            self.frame_lateral,
+            bg=self.cinza_medio,
+            relief=RAISED,
+            activebackground=self.cinza_escuro,
+            border=1,
+            command=lambda: self.selecionaModoCor("preenchimento"))
+        self.btn_fig_preenchida.place(x=10, y=830, width=80, height=32)
+
+        # Botão de sem preenchimento
+        self.img_btn_sem_preenchimento = PhotoImage(file="images/sem_preenchimento.png")
+        self.btn_sem_preenchimento = Button(
+            self.frame_lateral,
+            image=self.img_btn_sem_preenchimento,
+            bg=self.cinza_medio,
+            relief=RAISED,
+            activebackground=self.cinza_escuro,
+            border=1,
+            command=lambda: self.selecionaCor(None, self.modo_cor))
+        self.btn_sem_preenchimento.place(x=90, y=835, width=24, height=24)
+
+
 # ----- Botões de cores ----- #
     def widgets_cores(self):
         # Preto

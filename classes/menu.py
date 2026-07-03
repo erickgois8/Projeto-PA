@@ -24,7 +24,9 @@ class Menu(): #podemos dar um nome melhor dps
     rosa = "#f49ac2"
     
     ferramenta = "lapis"
-    cor = preto
+    modo_cor = "borda"
+    cor_borda = preto
+    cor_preenchimento = None
     figura_nova = None
     figuras = []
 
@@ -167,7 +169,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RIDGE,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaCor(self.preto))
+            command=lambda: self.selecionaCor(self.preto, self.modo_cor))
         self.botao_preto.place(x=80, y=600, width=32, height=32)
 
         # Branco
@@ -177,7 +179,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RIDGE,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaCor(self.branco))
+            command=lambda: self.selecionaCor(self.branco, self.modo_cor))
         self.botao_branco.place(x=10, y=600, width=32, height=32)
 
         # Cinza escuro
@@ -187,7 +189,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RIDGE,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaCor(self.cinza_escuro))
+            command=lambda: self.selecionaCor(self.cinza_escuro, self.modo_cor))
         self.botao_cinza_escuro.place(x=45, y=600, width=32, height=32)
 
         # Vermelho
@@ -197,7 +199,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RIDGE,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaCor(self.vermelho))
+            command=lambda: self.selecionaCor(self.vermelho, self.modo_cor))
         self.botao_vermelho.place(x=10, y=635, width=32, height=32)
 
         # Laranja
@@ -207,7 +209,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RIDGE,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaCor(self.laranja))
+            command=lambda: self.selecionaCor(self.laranja, self.modo_cor))
         self.botao_laranja.place(x=45, y=635, width=32, height=32)
 
         # Amarelo
@@ -217,7 +219,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RIDGE,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaCor(self.amarelo))
+            command=lambda: self.selecionaCor(self.amarelo, self.modo_cor))
         self.botao_amarelo.place(x=80, y=635, width=32, height=32)
 
         # Verde
@@ -227,7 +229,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RIDGE,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaCor(self.verde))
+            command=lambda: self.selecionaCor(self.verde, self.modo_cor))
         self.botao_verde.place(x=10, y=670, width=32, height=32)
 
         # Verde claro
@@ -237,7 +239,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RIDGE,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaCor(self.verde_claro))
+            command=lambda: self.selecionaCor(self.verde_claro, self.modo_cor))
         self.botao_verde_claro.place(x=45, y=670, width=32, height=32)
 
         # Ciano
@@ -247,7 +249,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RIDGE,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaCor(self.ciano))
+            command=lambda: self.selecionaCor(self.ciano, self.modo_cor))
         self.botao_ciano.place(x=80, y=670, width=32, height=32)
 
         # Azul
@@ -257,7 +259,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RIDGE,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaCor(self.azul))
+            command=lambda: self.selecionaCor(self.azul, self.modo_cor))
         self.botao_azul.place(x=10, y=705, width=32, height=32)
 
         # Roxo
@@ -267,7 +269,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RIDGE,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaCor(self.roxo))
+            command=lambda: self.selecionaCor(self.roxo, self.modo_cor))
         self.botao_roxo.place(x=45, y=705, width=32, height=32)
 
         # Rosa
@@ -277,16 +279,21 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RIDGE,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaCor(self.rosa))
+            command=lambda: self.selecionaCor(self.rosa, self.modo_cor))
         self.botao_rosa.place(x=80, y=705, width=32, height=32)
 
 # ----- FERRAMENTAS ----- #
-    def selecionaCor(self, cor):
-        # Se não houver controller, a própria classe guarda a cor
-        self.cor = cor
+    def selecionaCor(self, cor, modo_cor):
+        if modo_cor == "borda":
+            self.cor_borda = cor
+        
+        elif modo_cor == "preenchimento":
+            self.cor_preenchimento = cor
 
     def selecionaFerramenta(self, ferramenta):
         self.ferramenta = ferramenta
+
+# Seletor do modo cor
 
 # Borracha (a implementar)
 
@@ -302,22 +309,22 @@ class Menu(): #podemos dar um nome melhor dps
     # Quando o mouse é pressionado
     def iniciar_figura_nova(self, event):
         if self.ferramenta == "linha":
-            self.figura_nova = Linha(event.x, event.y, event.x, event.y, self.cor)
+            self.figura_nova = Linha(event.x, event.y, event.x, event.y, self.cor_borda)
 
         elif self.ferramenta == "lapis":
-            self.figura_nova = Lapis([(event.x, event.y)], self.cor)
+            self.figura_nova = Lapis([(event.x, event.y)], self.cor_borda)
 
         elif self.ferramenta == "oval":
-            self.figura_nova = Oval(event.x, event.y, event.x, event.y, self.cor, None)
+            self.figura_nova = Oval(event.x, event.y, event.x, event.y, self.cor_borda, self.cor_preenchimento)
         
         elif self.ferramenta == "retangulo":
-            self.figura_nova = Retangulo(event.x, event.y, event.x, event.y, self.cor, None)
+            self.figura_nova = Retangulo(event.x, event.y, event.x, event.y, self.cor_borda, self.cor_preenchimento)
 
         elif self.ferramenta == "quadrado":
-            self.figura_nova = Quadrado(event.x, event.y, event.x, event.y, self.cor, None)
+            self.figura_nova = Quadrado(event.x, event.y, event.x, event.y, self.cor_borda, self.cor_preenchimento)
 
         elif self.ferramenta == "circulo":
-            self.figura_nova = Circulo(event.x, event.y, event.x, event.y, self.cor, None)
+            self.figura_nova = Circulo(event.x, event.y, event.x, event.y, self.cor_borda, self.cor_preenchimento)
     
     # Quando o mouse é movido
     def atualizar_figura_nova(self, event):   

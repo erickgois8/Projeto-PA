@@ -3,11 +3,11 @@ from dataclasses import dataclass, field
 
 @dataclass
 class Linha(Figura):
-    cor_borda: str
     xi: int
     yi: int
     xf: int
     yf: int
+    cor_borda: str
 
     @property
     def pontos(self):

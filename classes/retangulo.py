@@ -3,12 +3,12 @@ from dataclasses import dataclass, field
 
 @dataclass
 class Retangulo(Figura):
-    cor_borda: str
-    cor_preenchimento: str
     xi: int
     yi: int
     xf: int
     yf: int
+    cor_borda: str
+    cor_preenchimento: str
 
     @property
     def pontos(self):

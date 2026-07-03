@@ -25,10 +25,12 @@ class Menu(): #podemos dar um nome melhor dps
     
     ferramenta = "lapis"
     modo_cor = "borda"
+
     cor_borda = preto
     cor_preenchimento = None
     figura_nova = None
     figuras = []
+    excluidos = []
 
 # ----- Criação do root ----- #
     def __init__(self):
@@ -160,14 +162,15 @@ class Menu(): #podemos dar um nome melhor dps
             command=lambda: self.selecionaFerramenta("retangulo"))
         self.botao_retangulo.place(x=45, y=125, width=32, height=32)
 
-        # Figuras com borda colorida
+        # Seletor modo cor de borda
         self.lbl_figuras_borda = Label(
             self.frame_lateral,
-            text="Cor da borda",
+            text="COR DE BORDA",
             bg=self.cinza_medio,
             fg=self.preto,
             font=("Arial", 7, "bold"))
         self.lbl_figuras_borda.place(x=28, y=754)
+
         self.btn_fig_borda = Button(
             self.frame_lateral,
             bg=self.cinza_medio,
@@ -177,14 +180,15 @@ class Menu(): #podemos dar um nome melhor dps
             command=lambda: self.selecionaModoCor("borda"))
         self.btn_fig_borda.place(x=20, y=770, width=80, height=32)
 
-        # Figuras preenchidas com cores
+        # Seletor modo preenchimento
         self.lbl_figuras = Label(
             self.frame_lateral,
-            text="Cor do preenchimento",
+            text="PREENCHIMENTO",
             bg=self.cinza_medio,
             fg=self.preto,
             font=("Arial", 7, "bold"))
         self.lbl_figuras.place(x=8, y=814)
+
         self.btn_fig_preenchida = Button(
             self.frame_lateral,
             bg=self.cinza_medio,
@@ -194,7 +198,7 @@ class Menu(): #podemos dar um nome melhor dps
             command=lambda: self.selecionaModoCor("preenchimento"))
         self.btn_fig_preenchida.place(x=10, y=830, width=80, height=32)
 
-        # Botão de sem preenchimento
+        # Seletor de sem preenchimento
         self.img_btn_sem_preenchimento = PhotoImage(file="images/sem_preenchimento.png")
         self.btn_sem_preenchimento = Button(
             self.frame_lateral,
@@ -203,7 +207,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RAISED,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaCor(None, self.modo_cor))
+            command=lambda: self.selecionaCor(None, "preenchimento"))
         self.btn_sem_preenchimento.place(x=90, y=835, width=24, height=24)
 
         # Botão desfazer
@@ -353,6 +357,9 @@ class Menu(): #podemos dar um nome melhor dps
         self.botao_rosa.place(x=80, y=705, width=32, height=32)
 
 # ----- FERRAMENTAS ----- #
+    def selecionaModoCor(self, modo_cor):
+        self.modo_cor = modo_cor
+
     def selecionaCor(self, cor, modo_cor):
         if modo_cor == "borda":
             self.cor_borda = cor
@@ -363,16 +370,22 @@ class Menu(): #podemos dar um nome melhor dps
     def selecionaFerramenta(self, ferramenta):
         self.ferramenta = ferramenta
 
-# Seletor do modo cor
-
 # Borracha (a implementar)
 
 # Balde de tinta (a implementar)
 
 # ----- ATALHOS (a implementar) ----- #
 
-# ctrl + z
-# ctrl + shif + z
+    def desfazer(self):
+         self.excluidos.append(self.figuras[-1])
+         self.figuras.pop()
+         self.desenhar_figuras()
+
+    def refazer(self):
+        self.figuras.append(self.excluidos[-1])
+        self.excluidos.pop()
+        self.desenhar_figuras()
+
 
 # ----- FUNÇÕES DE DESENHO ----- #
 

@@ -3,6 +3,8 @@ from dataclasses import dataclass, field
 
 @dataclass
 class Lapis(Figura):
+
+    # Atributos básicos para desenhar o rabisco
     pontos: list
     cor_borda: str
     
@@ -10,7 +12,7 @@ class Lapis(Figura):
         canvas.create_line(self.pontos, fill=self.cor_borda, dash=dash)
     
     def incompleta(self):
-        return len(self.pontos) <= 1
+        return len(self.pontos) <= 1 # Retorna se a lista de pontos de lápis só contém um ponto (o inicial)
     
     def atualizar(self, event):
-        self.pontos.append((event.x, event.y))
+        self.pontos.append((event.x, event.y)) # Adiciona novo ponto na lista de pontos do rabisco

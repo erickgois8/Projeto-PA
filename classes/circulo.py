@@ -3,13 +3,13 @@ from dataclasses import dataclass, field
 
 @dataclass
 class Circulo(Figura):
-    cor_borda: str
-    cor_preenchimento: str
     xi: int
     yi: int
     xf: int
     yf: int
     raio: float
+    cor_borda: str
+    cor_preenchimento: str
 
     def desenhar(self, canvas, dash=()):
         self.raio = ((self.yf - self.yi) ** 2 + (self.xf - self.xi) ** 2) ** 0.5

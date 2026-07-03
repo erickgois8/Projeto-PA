@@ -3,9 +3,9 @@ from dataclasses import dataclass, field
 
 @dataclass
 class Lapis(Figura):
-    cor_borda: str
     pontos: list
-
+    cor_borda: str
+    
     def desenhar(self, canvas, dash=()):
         canvas.createline(self.pontos, fill=self.cor_borda, dash=dash)
     

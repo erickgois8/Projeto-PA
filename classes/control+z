@@ -1,0 +1,27 @@
+class TelaPaint:
+    def __init__(self):
+        self.historico = [] 
+        self.tela = "Superfície da Tela Branca" 
+
+    def adicionar_desenho():
+       pass
+        
+
+    def desfazer(self):
+        
+        if not self.historico_desenhos:
+            print("\nTela em branco, nada para desfazer!")
+            return
+
+       
+        acao_removida = self.historico.pop()
+        print(f"\n[Ctrl+Z Acionado] Desfazendo a última ação...")
+        
+        self.atualizar_tela()
+
+    def atualizar_tela(self):
+        
+        print("--- Limpando a tela (Tudo Branco) ---")
+        
+        for desenho in self.historico:
+            desenho.desenhar(self.tela)

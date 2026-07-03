@@ -61,7 +61,7 @@ class Interface(): #podemos dar um nome melhor dps
             activebackground=self.cinza_escuro,
             border=1,
             text="lapis",
-            command=selecionaLapis)
+            command=self.selecionaLapis)
         self.botao_lapis.place(x=10, y=10, width=32, height=32)
         
         # Borracha
@@ -88,8 +88,33 @@ class Interface(): #podemos dar um nome melhor dps
 
         
 # ----- CONFIGURAÇÃO DAS FERRAMENTAS ----- #
-        def selecionaLapis(self):
-            self.ferramenta = "lapis"
+    def selecionaLapis(self):
+        self.ferramenta = "lapis"
+        print("selecionou: lapis")
+
+    def selecionaBorracha(self):
+        self.ferramenta = "borracha"
+
+    def selecionaBaldeTinta(self):
+        self.ferramenta = "balde_tinta"
+
+    def selecionaLinha(self):
+        self.ferramenta = "linha"
+
+    def selecionaCirculo(self):
+        self.ferramenta = "circulo"
+
+    def selecionaOval(self):
+        self.ferramenta = "oval"
+
+    def selecionaRetangulo(self):
+        self.ferramenta = "retangulo"
+        
+    def selecionaQuadrado(self):
+        self.ferramenta = "quadrado"
+
+    def selecionaCor(self, cor):
+        self.cor = cor
 
 
 # ----- FUNÇÕES DE DESENHO ----- #

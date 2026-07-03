@@ -169,7 +169,7 @@ class Menu(): #podemos dar um nome melhor dps
             bg=self.cinza_medio,
             fg=self.preto,
             font=("Arial", 7, "bold"))
-        self.lbl_figuras_borda.place(x=28, y=754)
+        self.lbl_figuras_borda.place(x=21, y=754)
 
         self.btn_fig_borda = Button(
             self.frame_lateral,
@@ -187,7 +187,7 @@ class Menu(): #podemos dar um nome melhor dps
             bg=self.cinza_medio,
             fg=self.preto,
             font=("Arial", 7, "bold"))
-        self.lbl_figuras.place(x=8, y=814)
+        self.lbl_figuras.place(x=15, y=814)
 
         self.btn_fig_preenchida = Button(
             self.frame_lateral,
@@ -200,6 +200,7 @@ class Menu(): #podemos dar um nome melhor dps
 
         # Seletor de sem preenchimento
         self.img_btn_sem_preenchimento = PhotoImage(file="images/sem_preenchimento.png")
+        self.img_btn_sem_preenchimento_ativo = PhotoImage(file="images/sem_preenchimento_ativo.png")
         self.btn_sem_preenchimento = Button(
             self.frame_lateral,
             image=self.img_btn_sem_preenchimento,
@@ -233,6 +234,7 @@ class Menu(): #podemos dar um nome melhor dps
             border=1,
             command=lambda: self.refazer())
         self.btn_refazer.place(x=70, y=950, width=32, height=32)
+
 
 # ----- Botões de cores ----- #
     def widgets_cores(self):
@@ -360,17 +362,29 @@ class Menu(): #podemos dar um nome melhor dps
     def selecionaModoCor(self, modo_cor):
         self.modo_cor = modo_cor
 
+    def atualiza_botao_sem_preenchimento(self):
+        if self.modo_cor == "preenchimento" and self.cor_preenchimento is None:
+            self.btn_sem_preenchimento.configure(image=self.img_btn_sem_preenchimento_ativo)
+        else:
+            self.btn_sem_preenchimento.configure(image=self.img_btn_sem_preenchimento)
+
     def selecionaCor(self, cor, modo_cor):
         if modo_cor == "borda":
             self.cor_borda = cor
         
         elif modo_cor == "preenchimento":
             self.cor_preenchimento = cor
+            if cor is None:
+                self.btn_sem_preenchimento.configure(image=self.img_btn_sem_preenchimento_ativo)
+            else:
+                self.btn_sem_preenchimento.configure(image=self.img_btn_sem_preenchimento)
+
+        self.atualiza_botao_sem_preenchimento()
 
     def selecionaFerramenta(self, ferramenta):
         self.ferramenta = ferramenta
 
-# Borracha (a implementar)
+# Borracha (a implementar)self.xi, self.yi) == (self.xf, self.
 
 # Balde de tinta (a implementar)
 

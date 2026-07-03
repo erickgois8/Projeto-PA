@@ -13,12 +13,12 @@ class Oval(Figura):
     cor_preenchimento: str
 
     def desenhar(self, canvas, dash=()):
-        canvas.create_oval(self.xi, self.yi, self.xf, self.yf,                                       # Define os limites do oval
+        canvas.create_oval(self.xi, self.yi, self.xf, self.yf,                                      
                                    fill=self.cor_preenchimento, outline=self.cor_borda, dash=dash)
     
     def incompleta(self):
-        return (self.xi, self.yi) == (self.xf, self.yf) # Retorna se o ponto final coincide ou não com o inicial
-    
-    def atualizar(self, event):    # Atualiza o ponto final conforme o mouse é movido
+        return (self.xi == self.xf or self.yi == self.yf)
+        
+    def atualizar(self, event):
         self.xf = event.x
         self.yf = event.y

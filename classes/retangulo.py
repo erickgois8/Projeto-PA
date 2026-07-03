@@ -20,7 +20,7 @@ class Retangulo(Figura):
         canvas.create_rectangle(self.pontos, fill=self.cor_preenchimento, outline=self.cor_borda, dash=dash)
 
     def incompleta(self):
-        return (self.xi, self.yi) == (self.xf, self.yf) # Retorna se o ponto final coincide ou não com o inicial
+        return (self.xi == self.xf) or (self.yi == self.yf) # Retorna se o ponto final coincide ou não com o inicial
     
     def atualizar(self, event): # Atualiza apenas o ponto final conforme o mouse é movido
         self.xf = event.x

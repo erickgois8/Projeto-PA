@@ -10,7 +10,8 @@ class Lapis(Figura):
     
     def desenhar(self, canvas, dash=()):
         canvas.create_line(self.pontos, fill=self.cor_borda, dash=dash)
-    
+        return False
+
     def incompleta(self):
         return len(self.pontos) <= 1 # Retorna se a lista de pontos de lápis só contém um ponto (o inicial)
     

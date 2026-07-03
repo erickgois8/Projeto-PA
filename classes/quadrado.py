@@ -1,4 +1,4 @@
-from figura import Figura
+from classes.figura import Figura
 from dataclasses import dataclass, field
 
 @dataclass
@@ -19,3 +19,10 @@ class Quadrado(Figura):
 
     def incompleta(self):
         return (self.xi, self.yi) == (self.xf, self.yf)
+    
+    def atualizar(self, event):
+        self.dist_x = event.x - self.xi 
+        self.dist_y = event.y - self.yi
+        lado = max(abs(self.dist_x), abs(self.dist_y)) 
+        self.xf = self.xi + lado * (1 if self.dist_x >= 0 else -1) 
+        self.yf = self.yi + lado * (1 if self.dist_y >= 0 else -1)

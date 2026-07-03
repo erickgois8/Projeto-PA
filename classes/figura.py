@@ -8,3 +8,7 @@ class Figura(ABC):
     @abstractmethod
     def incompleta(self):
         pass
+
+    @abstractmethod
+    def atualizar(self, event):
+        pass

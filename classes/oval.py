@@ -1,4 +1,4 @@
-from figura import Figura
+from classes.figura import Figura
 from dataclasses import dataclass, field
 
 @dataclass
@@ -12,7 +12,11 @@ class Oval(Figura):
 
     def desenhar(self, canvas, dash=()):
         canvas.create_oval(self.xi, self.yi, self.xf, self.yf,
-                                   fill=self.cor_preenchimento, outline=self.cor_de_borda, dash=dash)
+                                   fill=self.cor_preenchimento, outline=self.cor_borda, dash=dash)
     
     def incompleta(self):
         return (self.xi, self.yi) == (self.xf, self.yf)
+    
+    def atualizar(self, event):
+        self.xf = event.x
+        self.yf = event.y

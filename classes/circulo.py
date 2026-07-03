@@ -1,4 +1,4 @@
-from figura import Figura
+from classes.figura import Figura
 from dataclasses import dataclass, field
 
 @dataclass
@@ -7,7 +7,6 @@ class Circulo(Figura):
     yi: int
     xf: int
     yf: int
-    raio: float
     cor_borda: str
     cor_preenchimento: str
 
@@ -18,3 +17,7 @@ class Circulo(Figura):
         
     def incompleta(self):
         return (self.xi, self.yi) == (self.xf, self.yf)
+  
+    def atualizar(self, event):
+        self.xf = event.x
+        self.yf = event.y

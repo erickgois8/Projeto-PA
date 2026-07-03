@@ -1,4 +1,4 @@
-from figura import Figura
+from classes.figura import Figura
 from dataclasses import dataclass, field
 
 @dataclass
@@ -17,4 +17,8 @@ class Linha(Figura):
         canvas.create_line(self.pontos, fill=self.cor_borda, dash=dash)
 
     def incompleta(self):
-        (self.xi, self.yi) == (self.xf, self.yf)
+        return (self.xi, self.yi) == (self.xf, self.yf)
+
+    def atualizar(self, event):
+        self.xf = event.x
+        self.yf = event.y

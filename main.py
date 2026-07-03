@@ -1,3 +1,10 @@
-from janela import Menu
+from classes.interface import Interface
 
-janela = Menu()
+janela = Interface()
+
+janela.config()
+janela.frames()
+janela.canvas()
+janela.widgets()
+
+janela.root.mainloop()

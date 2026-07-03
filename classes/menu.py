@@ -295,7 +295,7 @@ class Menu(): #podemos dar um nome melhor dps
 # ----- ATALHOS (a implementar) ----- #
 
 # ctrl + z
-
+# ctrl + shif + z
 
 # ----- FUNÇÕES DE DESENHO ----- #
 
@@ -308,16 +308,16 @@ class Menu(): #podemos dar um nome melhor dps
             self.figura_nova = Lapis([(event.x, event.y)], self.cor)
 
         elif self.ferramenta == "oval":
-            self.figura_nova = Oval(event.x, event.y, event.x, event.y, self.cor, "white")
+            self.figura_nova = Oval(event.x, event.y, event.x, event.y, self.cor, None)
         
         elif self.ferramenta == "retangulo":
-            self.figura_nova = Retangulo(event.x, event.y, event.x, event.y, self.cor, "white")
+            self.figura_nova = Retangulo(event.x, event.y, event.x, event.y, self.cor, None)
 
         elif self.ferramenta == "quadrado":
-            self.figura_nova = Quadrado(event.x, event.y, event.x, event.y, self.cor, "white")
+            self.figura_nova = Quadrado(event.x, event.y, event.x, event.y, self.cor, None)
 
         elif self.ferramenta == "circulo":
-            self.figura_nova = Circulo(event.x, event.y, event.x, event.y, self.cor, "white")
+            self.figura_nova = Circulo(event.x, event.y, event.x, event.y, self.cor, None)
     
     # Quando o mouse é movido
     def atualizar_figura_nova(self, event):   

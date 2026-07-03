@@ -13,12 +13,15 @@ class Circulo(Figura):
     cor_preenchimento: str
 
     def desenhar(self, canvas, dash=()):
-        self.raio = ((self.yf - self.yi) ** 2 + (self.xf - self.xi) ** 2) ** 0.5                                 # Cálculo do raio (por Pitágoras)
-        canvas.create_oval(self.xi - self.raio, self.yi - self.raio, self.xi + self.raio, self.yi + self.raio,   # Oval limitada em um quadrado (círculo)
+        # Cálculo do raio (por Pitágoras)
+        self.raio = ((self.yf - self.yi) ** 2 + (self.xf - self.xi) ** 2) ** 0.5
+        # Oval limitada em um quadrado (círculo)
+        canvas.create_oval(self.xi - self.raio, self.yi - self.raio, self.xi + self.raio, self.yi + self.raio,
                             fill=self.cor_preenchimento, outline=self.cor_borda, dash=dash)
         
+    # Retorna se o ponto final coincide ou não com o inicial
     def incompleta(self):
-        return (self.xi, self.yi) == (self.xf, self.yf) # Retorna se o ponto final coincide ou não com o inicial
+        return (self.xi, self.yi) == (self.xf, self.yf)
   
 
     def atualizar(self, event):

@@ -200,7 +200,6 @@ class Menu(): #podemos dar um nome melhor dps
 
         # Seletor de sem preenchimento
         self.img_btn_sem_preenchimento = PhotoImage(file="images/sem_preenchimento.png")
-        self.img_btn_sem_preenchimento_ativo = PhotoImage(file="images/sem_preenchimento_ativo.png")
         self.btn_sem_preenchimento = Button(
             self.frame_lateral,
             image=self.img_btn_sem_preenchimento,
@@ -361,12 +360,6 @@ class Menu(): #podemos dar um nome melhor dps
 # ----- FERRAMENTAS ----- #
     def selecionaModoCor(self, modo_cor):
         self.modo_cor = modo_cor
-
-    def atualiza_botao_sem_preenchimento(self):
-        if self.modo_cor == "preenchimento" and self.cor_preenchimento is None:
-            self.btn_sem_preenchimento.configure(image=self.img_btn_sem_preenchimento_ativo)
-        else:
-            self.btn_sem_preenchimento.configure(image=self.img_btn_sem_preenchimento)
 
     def selecionaCor(self, cor, modo_cor):
         if modo_cor == "borda":

@@ -93,4 +93,3 @@ class Interface(): #podemos dar um nome melhor dps
 
 
 # ----- FUNÇÕES DE DESENHO ----- #
-    def iniciar_figura_nova(event): 

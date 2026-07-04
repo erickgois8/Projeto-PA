@@ -1,0 +1,1 @@
+# Testes relacionados à refatoração para etapa 3

@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 @dataclass
 class Linha(Figura):
 
-    # Atributos de linha
+    # Coordenadas dos pontos inicial e final, além da cor da borda da figura
     xi: int
     yi: int
     xf: int
@@ -16,14 +16,15 @@ class Linha(Figura):
     def pontos(self):
         return (self.xi, self.yi, self.xf, self.yf)
     
-    # Desenha uma linha no canvas pelos atributos de linha
+    # Desenha uma linha baseado nos pontos inicial e final
     def desenhar(self, canvas, dash=()):
         canvas.create_line(self.pontos, fill=self.cor_borda, dash=dash)
 
-    # Valida 
+    # Valida a figura (se o ponto final coincide ou não com o inicial)
     def incompleta(self):
-        return (self.xi, self.yi) == (self.xf, self.yf) # Retorna se o ponto final coincide ou não com o inicial
+        return (self.xi, self.yi) == (self.xf, self.yf)
 
+    # Atualiza o ponto final
     def atualizar(self, event):
         self.xf = event.x
         self.yf = event.y

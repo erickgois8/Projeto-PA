@@ -404,7 +404,7 @@ class Menu(): #podemos dar um nome melhor dps
     def selecionaFerramenta(self, ferramenta):
         self.ferramenta = ferramenta
 
-# Borracha (a implementar)self.xi, self.yi) == (self.xf, self.
+# Borracha (a implementar)
 
 # Balde de tinta (a implementar)
 

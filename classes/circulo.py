@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 @dataclass
 class Circulo(Figura):
     
-    # Atributos de circulo
+    # Coordenadas dos pontos inicial e final, além da cor da borda e de preenchimento da figura
     xi: int
     yi: int
     xf: int
@@ -12,7 +12,7 @@ class Circulo(Figura):
     cor_borda: str
     cor_preenchimento: str
 
-    # Desenha o circulo baseado nos seus atributos
+    # Desenha o circulo baseado nos pontos inicial e final
     def desenhar(self, canvas, dash=()):
 
         # Cálculo do raio (por Pitágoras)

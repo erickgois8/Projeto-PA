@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 @dataclass
 class Lapis(Figura):
 
-    # Atributos básicos para desenhar o rabisco
+    # Atributos de lapis
     pontos: list
     cor_borda: str
     

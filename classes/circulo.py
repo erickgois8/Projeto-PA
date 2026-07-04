@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 @dataclass
 class Circulo(Figura):
     
-    # Atributos básicos para desenho do círculo
+    # Atributos de circulo
     xi: int
     yi: int
     xf: int
@@ -12,18 +12,21 @@ class Circulo(Figura):
     cor_borda: str
     cor_preenchimento: str
 
+    # Desenha o circulo baseado nos seus atributos
     def desenhar(self, canvas, dash=()):
+
         # Cálculo do raio (por Pitágoras)
         self.raio = ((self.yf - self.yi) ** 2 + (self.xf - self.xi) ** 2) ** 0.5
-        # Oval limitada em um quadrado (círculo)
+
+        # Oval limitada em um quadrado (circulo)
         canvas.create_oval(self.xi - self.raio, self.yi - self.raio, self.xi + self.raio, self.yi + self.raio,
                             fill=self.cor_preenchimento, outline=self.cor_borda, dash=dash)
         
-    # Retorna se o ponto final coincide ou não com o inicial
+    # Valida a figura (se o ponto inicial coincide ou não com o final)
     def incompleta(self):
         return (self.xi, self.yi) == (self.xf, self.yf)
   
-
+    # Atualiza o ponto final pelo movimento do mouse
     def atualizar(self, event):
         self.xf = event.x
         self.yf = event.y

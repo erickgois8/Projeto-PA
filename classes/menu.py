@@ -64,6 +64,11 @@ class Menu(): #podemos dar um nome melhor dps
         # Posicionando o canvas corretamente e assegurando redimensinamento
         self.canva.pack(side=RIGHT, fill=BOTH, expand=True)
 
+        # Tornando interativo
+        self.canva.bind('<ButtonPress-1>', self.iniciar_figura_nova)
+        self.canva.bind('<B1-Motion>', self.atualizar_figura_nova)
+        self.canva.bind('<ButtonRelease-1>', self.incluir_figura_nova)
+
 # ----- CONFIGURAÇÃO DOS WIDGETS ----- #
     def widgets(self):
         # Lápis

@@ -173,7 +173,7 @@ class Menu(): #podemos dar um nome melhor dps
 
         self.btn_fig_borda = Button(
             self.frame_lateral,
-            bg=self.cinza_medio,
+            bg=self.preto,
             relief=RAISED,
             activebackground=self.cinza_escuro,
             border=1,
@@ -200,9 +200,10 @@ class Menu(): #podemos dar um nome melhor dps
 
         # Seletor de sem preenchimento
         self.img_btn_sem_preenchimento = PhotoImage(file="images/sem_preenchimento.png")
+        self.img_btn_sem_preenchimento_ativo = PhotoImage(file="images/sem_preenchimento_ativo.png")
         self.btn_sem_preenchimento = Button(
             self.frame_lateral,
-            image=self.img_btn_sem_preenchimento,
+            image=self.img_btn_sem_preenchimento_ativo,
             bg=self.cinza_medio,
             relief=RAISED,
             activebackground=self.cinza_escuro,
@@ -360,19 +361,40 @@ class Menu(): #podemos dar um nome melhor dps
 # ----- FERRAMENTAS ----- #
     def selecionaModoCor(self, modo_cor):
         self.modo_cor = modo_cor
+        self.atualiza_botao_borda()
+        self.atualiza_botao_preenchimento()
 
     def selecionaCor(self, cor, modo_cor):
         if modo_cor == "borda":
             self.cor_borda = cor
+            self.atualiza_botao_borda()
         
         elif modo_cor == "preenchimento":
             self.cor_preenchimento = cor
-            if cor is None:
-                self.btn_sem_preenchimento.configure(image=self.img_btn_sem_preenchimento_ativo)
-            else:
-                self.btn_sem_preenchimento.configure(image=self.img_btn_sem_preenchimento)
 
         self.atualiza_botao_sem_preenchimento()
+        self.atualiza_botao_preenchimento()
+
+    # Atualiza o botão de cor de borda para a cor selecionada
+    def atualiza_botao_borda(self):
+        if self.cor_borda is None:
+            self.btn_fig_borda.configure(bg=self.cinza_medio)
+        else:
+            self.btn_fig_borda.configure(bg=self.cor_borda)
+
+    # Atualiza o botão de preenchimento para a cor selecionada ou volta para o cinza padrão
+    def atualiza_botao_preenchimento(self):
+        if self.cor_preenchimento is None:
+            self.btn_fig_preenchida.configure(bg=self.cinza_medio)
+        else:
+            self.btn_fig_preenchida.configure(bg=self.cor_preenchimento)
+
+    # Atualiza o botão de sem preenchimento para que fique ativo quando selecionado e inativo quando não
+    def atualiza_botao_sem_preenchimento(self):
+        if self.cor_preenchimento is None:
+            self.btn_sem_preenchimento.configure(image=self.img_btn_sem_preenchimento_ativo)
+        else:
+            self.btn_sem_preenchimento.configure(image=self.img_btn_sem_preenchimento)
 
     def selecionaFerramenta(self, ferramenta):
         self.ferramenta = ferramenta

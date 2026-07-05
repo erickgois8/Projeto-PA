@@ -8,7 +8,7 @@ from classes.circulo import Circulo
 from tkinter import *
 from tkinter import ttk
 
-class Menu(): #podemos dar um nome melhor dps
+class Menu():
     cinza_escuro = "#808080"
     cinza_medio = "#C0C0C0"
     branco = "#FFFFFF"
@@ -23,12 +23,15 @@ class Menu(): #podemos dar um nome melhor dps
     roxo = "#6a4c93"
     rosa = "#f49ac2"
     
-    ferramenta = "lapis"
+    ferramenta = "desenhaFigura"
     modo_cor = "borda"
 
     cor_borda = preto
     cor_preenchimento = None
+
+    figura = "lapis"
     figura_nova = None
+
     figuras = []
     excluidos = []
 
@@ -65,9 +68,7 @@ class Menu(): #podemos dar um nome melhor dps
         self.canva.pack(side=RIGHT, fill=BOTH, expand=True)
 
         # Tornando interativo
-        self.canva.bind('<ButtonPress-1>', self.iniciar_figura_nova)
-        self.canva.bind('<B1-Motion>', self.atualizar_figura_nova)
-        self.canva.bind('<ButtonRelease-1>', self.incluir_figura_nova)
+        self.canva.bind('<ButtonPress-1>', self.usarFerramenta)
 
 # ----- CONFIGURAÇÃO DOS WIDGETS ----- #
     def widgets(self):
@@ -80,7 +81,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RAISED,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaFerramenta("lapis"))
+            command=lambda: self.selecionaFerramenta("desenhaFigura", "lapis"))
         self.botao_lapis.place(x=10, y=25, width=32, height=32)
     
         # Borracha
@@ -92,7 +93,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RAISED,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaFerramenta("borracha"))
+            command=lambda: self.selecionaFerramenta("borracha", None))
         self.botao_borracha.place(x=45, y=25, width=32, height=32)
 
         # Balde de tinta
@@ -104,7 +105,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RAISED,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaFerramenta("balde_tinta"))
+            command=lambda: self.selecionaFerramenta("baldeTinta", None))
         self.botao_balde_tinta.place(x=80, y=25, width=32, height=32)
 
         # Linha
@@ -116,7 +117,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RAISED,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaFerramenta("linha"))
+            command=lambda: self.selecionaFerramenta("desenhaFigura","linha"))
         self.botao_linha.place(x=10, y=90, width=32, height=32)
 
         # Círculo
@@ -128,7 +129,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RAISED,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaFerramenta("circulo"))
+            command=lambda: self.selecionaFerramenta("desenhaFigura", "circulo"))
         self.botao_circulo.place(x=45, y=90, width=32, height=32)
 
         # Oval
@@ -140,7 +141,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RAISED,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaFerramenta("oval"))
+            command=lambda: self.selecionaFerramenta("desenhaFigura", "oval"))
         self.botao_oval.place(x=80, y=90, width=32, height=32)
 
         # Quadrado
@@ -152,7 +153,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RAISED,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaFerramenta("quadrado"))
+            command=lambda: self.selecionaFerramenta("desenhaFigura", "quadrado"))
         self.botao_quadrado.place(x=10, y=125, width=32, height=32)
 
         # Retângulo
@@ -164,7 +165,7 @@ class Menu(): #podemos dar um nome melhor dps
             relief=RAISED,
             activebackground=self.cinza_escuro,
             border=1,
-            command=lambda: self.selecionaFerramenta("retangulo"))
+            command=lambda: self.selecionaFerramenta("desenhaFigura", "retangulo"))
         self.botao_retangulo.place(x=45, y=125, width=32, height=32)
 
         # Seletor modo cor de borda
@@ -380,35 +381,57 @@ class Menu(): #podemos dar um nome melhor dps
         self.atualiza_botao_sem_preenchimento()
         self.atualiza_botao_preenchimento()
 
-    # Atualiza o botão de cor de borda para a cor selecionada
-    def atualiza_botao_borda(self):
-        if self.cor_borda is None:
-            self.btn_fig_borda.configure(bg=self.cinza_medio)
-        else:
-            self.btn_fig_borda.configure(bg=self.cor_borda)
-
-    # Atualiza o botão de preenchimento para a cor selecionada ou volta para o cinza padrão
-    def atualiza_botao_preenchimento(self):
-        if self.cor_preenchimento is None:
-            self.btn_fig_preenchida.configure(bg=self.cinza_medio)
-        else:
-            self.btn_fig_preenchida.configure(bg=self.cor_preenchimento)
-
-    # Atualiza o botão de sem preenchimento para que fique ativo quando selecionado e inativo quando não
-    def atualiza_botao_sem_preenchimento(self):
-        if self.cor_preenchimento is None:
-            self.btn_sem_preenchimento.configure(image=self.img_btn_sem_preenchimento_ativo)
-        else:
-            self.btn_sem_preenchimento.configure(image=self.img_btn_sem_preenchimento)
-
-    def selecionaFerramenta(self, ferramenta):
+    def selecionaFerramenta(self, ferramenta, figura):
         self.ferramenta = ferramenta
+        self.figura = figura
 
-# Borracha (a implementar)
+    def usarFerramenta(self, event):
+        self.canva.unbind('<B1-Motion>')
+        self.canva.unbind('<ButtonRelease-1>')
 
-# Balde de tinta (a implementar)
+        if self.ferramenta == "desenhaFigura":
+            self.iniciar_figura_nova(event)
+            self.canva.bind('<B1-Motion>', self.atualizar_figura_nova)
+            self.canva.bind('<ButtonRelease-1>', self.incluir_figura_nova)
+            
+        elif self.ferramenta == "borracha":
+            self.apagar(event)
+            self.canva.bind('<B1-Motion>', self.apagar)
 
-# ----- ATALHOS (a implementar) ----- #
+        elif self.ferramenta == "baldeTinta":
+            self.preencher(event)
+
+    def apagar(self, event):
+        raio = 5
+
+        x1 = event.x + raio
+        x2 = event.x - raio
+        y1 = event.y + raio
+        y2 = event.y - raio
+
+        ids = self.canva.find_overlapping(x1, y1, x2, y2)
+        
+        for i in range(len(ids) - 1, -1, -1):
+            for j in range(len(self.figuras) - 1, -1, -1):
+                if self.figuras[j].id == ids[i]:
+                    self.figuras.pop(j)
+                    self.canva.delete(ids[i])
+
+        self.desenhar_figuras()
+
+
+    def preencher(self, event):
+        ids = self.canva.find_overlapping(event.x, event.y, event.x, event.y)
+
+        for i in range(len(ids) - 1, -1, -1):
+            for j in range(len(self.figuras) - 1, -1, -1):
+                if self.figuras[j].id == ids[i]:
+                    self.canva.delete(ids[i])
+                    self.figuras[j].redesenhar(self.canva, self.cor_preenchimento)
+
+        self.desenhar_figuras()
+
+# ----- ATALHOS ----- #
 
     def desfazer(self):
          self.excluidos.append(self.figuras[-1])
@@ -425,22 +448,22 @@ class Menu(): #podemos dar um nome melhor dps
 
     # Quando o mouse é pressionado
     def iniciar_figura_nova(self, event):
-        if self.ferramenta == "linha":
+        if self.figura == "linha":
             self.figura_nova = Linha(event.x, event.y, event.x, event.y, self.cor_borda)
 
-        elif self.ferramenta == "lapis":
+        elif self.figura == "lapis":
             self.figura_nova = Lapis([(event.x, event.y)], self.cor_borda)
 
-        elif self.ferramenta == "oval":
+        elif self.figura == "oval":
             self.figura_nova = Oval(event.x, event.y, event.x, event.y, self.cor_borda, self.cor_preenchimento)
         
-        elif self.ferramenta == "retangulo":
+        elif self.figura == "retangulo":
             self.figura_nova = Retangulo(event.x, event.y, event.x, event.y, self.cor_borda, self.cor_preenchimento)
 
-        elif self.ferramenta == "quadrado":
+        elif self.figura == "quadrado":
             self.figura_nova = Quadrado(event.x, event.y, event.x, event.y, self.cor_borda, self.cor_preenchimento)
 
-        elif self.ferramenta == "circulo":
+        elif self.figura == "circulo":
             self.figura_nova = Circulo(event.x, event.y, event.x, event.y, self.cor_borda, self.cor_preenchimento)
     
     # Quando o mouse é movido
@@ -467,4 +490,27 @@ class Menu(): #podemos dar um nome melhor dps
 
     # Desenha a nova figura
     def desenhar_figura_nova(self):
-        self.figura_nova.desenhar(self.canva, dash=(4,2))
+        self.figura_nova.desenhar(self.canva, dash=(10,5))
+
+# ----- FUNÇÕES AUXILIARES ----- #
+
+    # Atualiza o botão de cor de borda para a cor selecionada
+    def atualiza_botao_borda(self):
+        if self.cor_borda is None:
+            self.btn_fig_borda.configure(bg=self.cinza_medio)
+        else:
+            self.btn_fig_borda.configure(bg=self.cor_borda)
+
+    # Atualiza o botão de preenchimento para a cor selecionada ou volta para o cinza padrão
+    def atualiza_botao_preenchimento(self):
+        if self.cor_preenchimento is None:
+            self.btn_fig_preenchida.configure(bg=self.cinza_medio)
+        else:
+            self.btn_fig_preenchida.configure(bg=self.cor_preenchimento)
+
+    # Atualiza o botão de sem preenchimento para que fique ativo quando selecionado e inativo quando não
+    def atualiza_botao_sem_preenchimento(self):
+        if self.cor_preenchimento is None:
+            self.btn_sem_preenchimento.configure(image=self.img_btn_sem_preenchimento_ativo)
+        else:
+            self.btn_sem_preenchimento.configure(image=self.img_btn_sem_preenchimento)

@@ -14,8 +14,14 @@ class Oval(Figura):
 
     # Desenha a oval baseada nos pontos inicial e final (que limitam um retângulo)
     def desenhar(self, canvas, dash=()):
-        canvas.create_oval(self.xi, self.yi, self.xf, self.yf,                                      
-                                   fill=self.cor_preenchimento, outline=self.cor_borda, dash=dash)
+        self.tipo = "oval"
+        self.id = canvas.create_oval(self.xi, self.yi, self.xf, self.yf,                                      
+                                   fill=self.cor_preenchimento, outline=self.cor_borda, dash=dash, width=3)
+        
+    def redesenhar(self, canvas, cor):
+        self.cor_preenchimento = cor
+        self.id = canvas.create_oval(self.xi, self.yi, self.xf, self.yf,                                      
+                                   fill=self.cor_preenchimento, outline=self.cor_borda, width=3)
     
     # Valida a figura (se a elipse forma uma linha horizontal ou vertical ou se os pontos inicial e final coincidem)
     def incompleta(self):

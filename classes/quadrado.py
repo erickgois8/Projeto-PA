@@ -19,8 +19,13 @@ class Quadrado(Figura):
 
     # Desenha a figura baseada no ponto inicial, final e tamanho de lado
     def desenhar(self, canvas, dash=()):
-        canvas.create_rectangle(self.pontos, fill=self.cor_preenchimento, outline = self.cor_borda, dash=dash)
+        self.tipo = "quadrado"
+        self.id = canvas.create_rectangle(self.pontos, fill=self.cor_preenchimento, outline = self.cor_borda, dash=dash, width=3)
 
+    def redesenhar(self, canvas, cor):
+        self.cor_preenchimento = cor
+        self.id = canvas.create_rectangle(self.pontos, fill=self.cor_preenchimento, outline = self.cor_borda, width=3)
+        
     # Valida a figura (se os pontos inicial e final coincidem ou não)
     def incompleta(self):
         return (self.xi, self.yi) == (self.xf, self.yf)

@@ -22,17 +22,6 @@ class Menu():
     azul = "#1982c4"
     roxo = "#6a4c93"
     rosa = "#f49ac2"
-    
-    ferramenta = "desenhaFigura"
-    modo_cor = "borda"
-
-    cor_borda = preto
-    cor_preenchimento = None
-
-    figura = "lapis"
-    figura_nova = None
-
-    figuras = []
 
 # ----- Criação do root ----- #
     def __init__(self):

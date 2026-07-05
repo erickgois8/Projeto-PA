@@ -7,12 +7,12 @@ class Figura(ABC):
     def desenhar(self, canvas, dash=()):
         pass
     
-    # Valida a figura
-    @abstractmethod
-    def incompleta(self):
-        pass
-
     # Descreve como a figura se atualiza de acordo com o movimento do mouse
     @abstractmethod
     def atualizar(self, event):
+        pass
+
+    # Valida a figura
+    @abstractmethod
+    def incompleta(self):
         pass

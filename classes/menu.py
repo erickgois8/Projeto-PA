@@ -33,7 +33,6 @@ class Menu():
     figura_nova = None
 
     figuras = []
-    excluidos = []
 
 # ----- Criação do root ----- #
     def __init__(self):
@@ -43,7 +42,18 @@ class Menu():
         self.canvas()
         self.widgets()
         self.widgets_cores()
-    
+        
+        self.ferramenta = "desenhaFigura"
+        self.modo_cor = "borda"
+
+        self.cor_borda = self.preto
+        self.cor_preenchimento = None
+
+        self.figura = "lapis"
+        self.figura_nova = None
+
+        self.figuras = []
+
 # ----- CONFIGURAR NOME, FORMATO E ÍCONE DA JANELA ----- #
     def config(self):
         self.root.title("Meu paint")
@@ -385,7 +395,7 @@ class Menu():
         self.ferramenta = ferramenta
         self.figura = figura
 
-    def usarFerramenta(self, event):
+    def usarFerramenta(self, event):        
         self.canva.unbind('<B1-Motion>')
         self.canva.unbind('<ButtonRelease-1>')
 
@@ -404,44 +414,37 @@ class Menu():
     def apagar(self, event):
         raio = 5
 
-        x1 = event.x + raio
-        x2 = event.x - raio
-        y1 = event.y + raio
-        y2 = event.y - raio
+        x1 = event.x - raio
+        y1 = event.y - raio
+        x2 = event.x + raio
+        y2 = event.y + raio
 
         ids = self.canva.find_overlapping(x1, y1, x2, y2)
         
-        for i in range(len(ids) - 1, -1, -1):
-            for j in range(len(self.figuras) - 1, -1, -1):
-                if self.figuras[j].id == ids[i]:
-                    self.figuras.pop(j)
-                    self.canva.delete(ids[i])
+        for figura in self.figuras[:]:
+            if figura.id in ids:
+                self.figuras.remove(figura)
 
         self.desenhar_figuras()
-
 
     def preencher(self, event):
         ids = self.canva.find_overlapping(event.x, event.y, event.x, event.y)
 
-        for i in range(len(ids) - 1, -1, -1):
-            for j in range(len(self.figuras) - 1, -1, -1):
-                if self.figuras[j].id == ids[i]:
-                    self.canva.delete(ids[i])
-                    self.figuras[j].redesenhar(self.canva, self.cor_preenchimento)
+        for id_canvas in ids:
+            figura = self.encontrar_figura(id_canvas)
+
+        if figura:
+            figura.cor_preenchimento = self.cor_preenchimento
 
         self.desenhar_figuras()
 
-# ----- ATALHOS ----- #
+# ----- DESFAZER E REFAZER ----- #
 
     def desfazer(self):
-         self.excluidos.append(self.figuras[-1])
-         self.figuras.pop()
-         self.desenhar_figuras()
+        pass
 
     def refazer(self):
-        self.figuras.append(self.excluidos[-1])
-        self.excluidos.pop()
-        self.desenhar_figuras()
+        pass
 
 
 # ----- FUNÇÕES DE DESENHO ----- #
@@ -485,8 +488,8 @@ class Menu():
     def desenhar_figuras(self):
         self.canva.delete("all")
 
-        for fig in self.figuras:
-            fig.desenhar(self.canva)
+        for figura in self.figuras:
+            figura.desenhar(self.canva)
 
     # Desenha a nova figura
     def desenhar_figura_nova(self):
@@ -514,3 +517,9 @@ class Menu():
             self.btn_sem_preenchimento.configure(image=self.img_btn_sem_preenchimento_ativo)
         else:
             self.btn_sem_preenchimento.configure(image=self.img_btn_sem_preenchimento)
+
+    def encontrar_figura(self, id_canvas):
+        for figura in self.figuras:
+            if figura.id == id_canvas:
+                return figura
+        return None

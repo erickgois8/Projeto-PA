@@ -13,14 +13,11 @@ class Lapis(Figura):
         self.tipo = "lapis"
         self.id = canvas.create_line(self.pontos, fill=self.cor_borda, dash=dash, width=3)
         return False
-
-    def redesenhar(self, canvas, cor):
-        self.id = canvas.create_line(self.pontos, fill=self.cor_borda, width=3)
         
-    # Valida a figura (qualquer rabisco é válido)
-    def incompleta(self):
-        return False
-    
     # Adiciona na lista o novo ponto em que mouse passa
     def atualizar(self, event):
         self.pontos.append((event.x, event.y))
+
+    # Valida a figura (qualquer rabisco é válido)
+    def incompleta(self):
+        return False

@@ -22,17 +22,12 @@ class Circulo(Figura):
         # Oval limitada em um quadrado (circulo)
         self.id = canvas.create_oval(self.xi - self.raio, self.yi - self.raio, self.xi + self.raio, self.yi + self.raio,
                             fill=self.cor_preenchimento, outline=self.cor_borda, dash=dash, width=3)
-        
-    def redesenhar(self, canvas, cor):
-            self.cor_preenchimento = cor
-            self.id = canvas.create_oval(self.xi - self.raio, self.yi - self.raio, self.xi + self.raio, self.yi + self.raio,
-                            fill=self.cor_preenchimento, outline=self.cor_borda, width=3)
-            
-    # Valida a figura (se o ponto inicial coincide ou não com o final)
-    def incompleta(self):
-        return (self.xi, self.yi) == (self.xf, self.yf)
-  
+    
     # Atualiza o ponto final pelo movimento do mouse
     def atualizar(self, event):
         self.xf = event.x
         self.yf = event.y
+
+    # Valida a figura (se o ponto inicial coincide ou não com o final)
+    def incompleta(self):
+        return (self.xi, self.yi) == (self.xf, self.yf)

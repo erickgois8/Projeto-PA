@@ -10,7 +10,7 @@ class Linha(Figura):
     xf: int
     yf: int
     cor_borda: str
-    
+
     # Desenha uma linha baseado nos pontos inicial e final
     def desenhar(self, canvas, dash=()):
         self.tipo = "linha"

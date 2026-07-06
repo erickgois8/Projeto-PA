@@ -17,4 +17,3 @@ class BotoesAtalhos:
         self.botao_lapis.grid(row=10, column=25)
 
         # Botão de borrancha
-        self.Img_borracha = P

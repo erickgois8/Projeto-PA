@@ -1,4 +1,4 @@
 from tkinter import *
 
-class FrameFerramentas:
+class FrameFormas:
     pass

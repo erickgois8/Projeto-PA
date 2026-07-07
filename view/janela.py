@@ -1,4 +1,5 @@
 from tkinter import *
+
 from view.frame_lateral import FrameLateral
 from view.area_desenho import AreaDesenho
 

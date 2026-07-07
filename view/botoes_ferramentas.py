@@ -2,7 +2,6 @@ from tkinter import *
 
 class BotoesFerramentas:
     def __init__(self, root):
-
         # Imagens dos Botões
         self.img_btn_lapis = PhotoImage(file="images/lapis.png")
         self.img_btn_borracha = PhotoImage(file="images/borracha.png")

@@ -1,19 +1,63 @@
 from tkinter import *
 
 class BotoesAtalhos:
-    def __init__(self, frame_atalhos):
-        self.frame_atalhos = frame_atalhos
+    def __init__(self, root):
+        # Imagens dos Botões
+        self.img_btn_desfazer = PhotoImage(file="images/desfazer.png")
+        self.img_btn_refazer = PhotoImage(file="images/refazer.png")
 
-        # Botão de rabisco
-        self.Img_lapis = PhotoImage(file="images/lapis.png")
-        self.botao_lapis = Button(self.frame_atalhos,
-                                  image=self.Img_lapis,
-                                  bg = "#C0C0C0",
-                                  relief=RAISED,
-                                  activebackground="#A9A9A9",
-                                  border=1,
-                                  width=32,
-                                  height=32) 
-        self.botao_lapis.grid(row=10, column=25)
+        # Seletor modo preenchimento
+        self.lbl_borda = Label(
+            master=root,
+            text="COR DE BORDA",
+            bg="#C0C0C0",
+            fg="#000000",
+            font=("Arial", 7, "bold"))
+        self.lbl_borda.grid(row=0, column=0)
 
-        # Botão de borrancha
+        self.btn_cor_borda = Button(
+            master=root,
+            bg="#C0C0C0",
+            relief=RAISED,
+            activebackground="#808080",
+            border=1,
+            width=8)
+        self.btn_cor_borda.grid(row=1, column=0)
+
+        # Seletor modo preenchimento
+        self.lbl_preenchimento = Label(
+            master=root,
+            text="PREENCHIMENTO",
+            bg="#C0C0C0",
+            fg="#000000",
+            font=("Arial", 7, "bold"))
+        self.lbl_preenchimento.grid(row=9, column=0)
+
+        self.btn_fig_preenchida = Button(
+            master=root,
+            bg="#C0C0C0",
+            relief=RAISED,
+            activebackground="#808080",
+            border=1,
+            width=5)
+        self.btn_fig_preenchida.grid(row=10, column=0)
+
+        # Botão desfazer
+        self.btn_desfazer = Button(
+            master=root,
+            image=self.img_btn_desfazer,
+            bg="#C0C0C0",
+            relief=RAISED,
+            activebackground="#808080",
+            border=1)
+        self.btn_desfazer.grid(row=11, column=0)
+
+        # Botão refazer
+        self.btn_refazer = Button(
+            master=root,
+            image=self.img_btn_refazer,
+            bg="#C0C0C0",
+            relief=RAISED,
+            activebackground="#808080",
+            border=1)
+        self.btn_refazer.grid(row=11, column=1)

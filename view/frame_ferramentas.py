@@ -1,9 +1,12 @@
 from tkinter import *
 
+from view.botoes_ferramentas import BotoesFerramentas
+
 class FrameFerramentas:
     def __init__(self, root):
         self.frame = Frame(root, bg="#C0C0C0", width=100, height=67)
         self.frame.pack(padx=10, pady=(25, 60))
 
-        # Botões de ferramentas
+        # Colocando os botões de ferramentas
+        self.botoes_ferramentas = BotoesFerramentas(self.frame)
         

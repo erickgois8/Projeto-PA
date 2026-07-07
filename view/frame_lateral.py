@@ -15,7 +15,7 @@ class FrameLateral:
         self.frame_ferramentas = FrameFerramentas(self.frame)
 
         # Frame de formas
-        self.frame_ferramentas = FrameFormas(self.frame)
+        self.frame_formas = FrameFormas(self.frame)
 
         # Frame de cores
         self.frame_cores = FrameCores(self.frame)

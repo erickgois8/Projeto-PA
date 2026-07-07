@@ -2,6 +2,8 @@ from tkinter import *
 
 class BotoesFormas:
     def __init__(self, root):
+
+        # Imagens dos Botões
         self.img_btn_linha = PhotoImage(file="images/linha.png")
         self.img_btn_circulo = PhotoImage(file="images/circulo.png")
         self.img_btn_oval = PhotoImage(file="images/oval.png")
@@ -12,7 +14,7 @@ class BotoesFormas:
         self.botao_linha = Button(
             master=root,
             image=self.img_btn_linha,
-            bg="#1B1919",
+            bg="#C0C0C0",
             relief=RAISED,
             activebackground="#808080",
             border=1)

@@ -12,8 +12,6 @@ class Janela:
 
         # Colocando frame lateral
         self.frame_lateral = FrameLateral(self.root)
-        self.frame_lateral.pack(side=LEFT, fill=Y)
-
-        # Colocando canvas
+        
+        # Canvas
         self.area_desenho = AreaDesenho(self.root)
-        self.area_desenho.pack(side=RIGHT, fill=BOTH, expand=True)

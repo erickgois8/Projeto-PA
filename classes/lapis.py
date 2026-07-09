@@ -12,7 +12,6 @@ class Lapis(Figura):
     def desenhar(self, canvas, dash=()):
         self.tipo = "lapis"
         self.id = canvas.create_line(self.pontos, fill=self.cor_borda, dash=dash, width=3)
-        return False
         
     # Adiciona na lista o novo ponto em que mouse passa
     def atualizar(self, event):

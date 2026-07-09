@@ -1,0 +1,2 @@
+class Refazer:
+    pass

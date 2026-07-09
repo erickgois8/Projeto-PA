@@ -1,5 +1,5 @@
 from model.cores import Cores
 from view.janela import Janela
 
-class ControllerCores:
+class ControllerModoCor:
     pass

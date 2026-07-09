@@ -1,13 +1,18 @@
-from controller.config_btn_ferramentas import ConfigFerramentas
+from model.ferramentas import Ferramentas
+from view.janela import Janela
 
+class ControllerFerramentas:
+    def __init__(self, view: Janela, ferramentas: Ferramentas):
 
-class ControladorFerramentas:
-    def __init__(self, controlador_principal):
-        self.controlador = controlador_principal
-        self.janela = controlador_principal.janela
+        # Botão de lápis
+        view.frame_lateral.frame_ferramentas.botoes_ferramentas.botao_lapis.config(
+            command=lambda: ferramentas.selecionar_ferramenta("lapis"))
 
-        self.config_ferramentas = ConfigFerramentas(self)
+        # Botão de borracha
+        view.frame_lateral.frame_ferramentas.botoes_ferramentas.botao_borracha.config(
+            command=lambda: ferramentas.selecionar_ferramenta("borracha"))
 
-    def selecionar_ferramenta(self, ferramenta):
-        self.controlador.ferramenta_atual = ferramenta
-        print("Ferramenta atual:", ferramenta)  # tirar dps
+        # Botão de balde de tinta
+        view.frame_lateral.frame_ferramentas.botoes_ferramentas.botao_balde_tinta.config(
+            command=lambda: ferramentas.selecionar_ferramenta("balde_tinta"))
+        

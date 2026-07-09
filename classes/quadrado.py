@@ -17,7 +17,7 @@ class Quadrado(Figura):
         self.tipo = "quadrado"
         self.id = canvas.create_rectangle(self.xi, self.yi, self.xf, self.yf, fill=self.cor_preenchimento, outline = self.cor_borda, dash=dash, width=3)
 
-    # Atualiza a figura conforme o tamanho varia o o ponto final e o lado
+    # Atualiza def a figura conforme o tamanho varia o o ponto final e o lado
     def atualizar(self, event):
         self.dist_x = event.x - self.xi 
         self.dist_y = event.y - self.yi

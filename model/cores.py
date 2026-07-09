@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+# Gerencia a seleção de cores da borda e do preenchimento
 @dataclass
 class Cores:
     modo: str = "borda"

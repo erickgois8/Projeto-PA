@@ -1,7 +1,7 @@
 from tkinter import *
-
 from view.botoes_cores import BotoesCores
 
+# Define frame de botões de cores
 class FrameCores:
     def __init__(self, root):
         self.frame = Frame(root, bg="#C0C0C0", width=99, height=137)

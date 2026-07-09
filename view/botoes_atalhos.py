@@ -7,57 +7,65 @@ class BotoesAtalhos:
         self.img_btn_refazer = PhotoImage(file="images/refazer.png")
 
         # Seletor modo preenchimento
-        self.lbl_borda = Label(
+        """self.lbl_borda = Label(
             master=root,
             text="COR DE BORDA",
             bg="#C0C0C0",
             fg="#000000",
             font=("Arial", 7, "bold"))
-        self.lbl_borda.grid(row=0, column=0)
+        self.lbl_borda.grid(row=0, column=0, columnspan=3)"""
 
         self.btn_cor_borda = Button(
             master=root,
             bg="#C0C0C0",
             relief=RAISED,
             activebackground="#808080",
-            border=1,
-            width=8)
-        self.btn_cor_borda.grid(row=1, column=0)
+            border=1)
+        self.btn_cor_borda.grid(row=0, column=0, columnspan=2)
+        self
 
         # Seletor modo preenchimento
-        self.lbl_preenchimento = Label(
+        """self.lbl_preenchimento = Label(
             master=root,
             text="PREENCHIMENTO",
             bg="#C0C0C0",
             fg="#000000",
             font=("Arial", 7, "bold"))
-        self.lbl_preenchimento.grid(row=9, column=0)
+        self.lbl_preenchimento.grid(row=3, column=0, columnspan=3)"""
 
         self.btn_fig_preenchida = Button(
             master=root,
             bg="#C0C0C0",
             relief=RAISED,
             activebackground="#808080",
-            border=1,
-            width=5)
-        self.btn_fig_preenchida.grid(row=10, column=0)
+            border=1)
+        self.btn_fig_preenchida.grid(row=2, column=0, columnspan=1)
+        
+        self.btn_figura_vazia = Button(
+            master=root,
+            bg="#C0C0C0",
+            relief=RAISED,
+            activebackground="#808080",
+            border=1
+        )
+        self.btn_figura_vazia.grid(row=2, column=2)
 
         # Botão desfazer
-        self.btn_desfazer = Button(
+        """self.btn_desfazer = Button(
             master=root,
             image=self.img_btn_desfazer,
             bg="#C0C0C0",
             relief=RAISED,
             activebackground="#808080",
             border=1)
-        self.btn_desfazer.grid(row=11, column=0)
+        self.btn_desfazer.grid(row=6, column=0)"""
 
         # Botão refazer
-        self.btn_refazer = Button(
+        """self.btn_refazer = Button(
             master=root,
             image=self.img_btn_refazer,
             bg="#C0C0C0",
             relief=RAISED,
             activebackground="#808080",
             border=1)
-        self.btn_refazer.grid(row=11, column=1)
+        self.btn_refazer.grid(row=6, column=2)"""

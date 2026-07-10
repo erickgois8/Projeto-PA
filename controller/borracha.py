@@ -1,19 +1,22 @@
 class Borracha:
-    def __init__(self, raio=5):
+    def __init__(self,raio= 5):
         self.raio = raio
 
-    def usar(self, x, y, model, view):
-        xi, yi = x - self.raio, y - self.raio
-        xf, yf = x + self.raio, y + self.raio
+    def usar(self, canvas, figuras, figura, event):
+    
+        x1 = event.x - self.raio
+        y1 = event.y - self.raio
+        x2 = event.x + self.raio
+        y2 = event.y + self.raio
 
         
-        ids_afetados = view.obter_ids_sobrepostos(xi, yi, xf, yf)
+        ids = self.canvas.find_overlapping(x1, y2, x2, y2)
 
-        if ids_afetados:
-            model.remover_figuras_por_ids(ids_afetados)
-            return True 
+        for figura in self.figuras[:]:
+            if figura.id in ids:
+                self.figuras.remove(figura)
             
-        return False 
+        self.desenhar_figuras()
 
 
 

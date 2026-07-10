@@ -10,7 +10,7 @@ class Cores:
     def selecionar_modo(self, modo):
         self.modo = modo
 
-    def selecionar_cor(self, modo, cor):
+    def selecionar_cor(self, cor, modo):
         if modo == "borda":
             self.borda = cor
 

@@ -1,16 +1,16 @@
 from controller.controller_ferramentas import ControllerFerramentas
 from controller.controller_formas import ControllerFormas
 from controller.controller_cores import ControllerCores
-from controller.controller_modo_cor import ControllerAtalhos
+from controller.controller_modo_cor import ControllerModoCor
 
-from controller.desenho import Desenho, Lapis, Linha, Retangulo, Quadrado, Triangulo, Oval, Circulo
+from controller.desenho import Desenho
+from controller.desenho_figura_nova import DesenhoFiguraNova
 from controller.borracha import Borracha
 from controller.balde_tinta import BaldeTinta
 
 from model.ferramentas import Ferramentas
 from model.figuras import Figuras
 from model.cores import Cores
-from model.figura_nova import FiguraNova
 
 from view.janela import Janela
 
@@ -28,52 +28,50 @@ class ControllerPrincipal:
         # Gerencia as cores selecionadas
         self.cores = Cores()
 
-        # Inclusao das ferramentas
-        self.desenho = Desenho()
+        # Desenha no canvas
+        self.desenho = Desenho(self.view.canvas)
+
+        # Inclusão das ferramentas de desenho da nova figura
+        self.desenho_figura_nova = DesenhoFiguraNova(self.desenho, 
+                                                     self.ferramentas.tipo_ferramenta,
+                                                     self.cores.borda,
+                                                     self.cores.preenchimento)
+        
+        # Inclusão da ferramenta de borracha
+        self.borracha = Borracha(self.desenho)
+
+        # Inclusão da ferramenta de balde de tinta
+        self.balde_tinta = BaldeTinta(self.desenho)
 
         # Configura os botões da interface com suas funções
         self.controller_ferramentas = ControllerFerramentas(view, self.ferramentas)
         self.controller_formas = ControllerFormas(view, self.ferramentas)
         self.controller_cores = ControllerCores(view, self.cores)
-        self.controller_atalhos = ControllerAtalhos(view, self.cores)
+        self.controller_modo_cor = ControllerModoCor(view, self.cores)
+
+        # Configura o clique do mouse na area de desenho
+        self.view.canvas.bind('<ButtonPress-1>', self.usar_ferramenta)
 
 
-    # Quando o mouse é pressionado
-    def iniciar_figura_nova(self, event):
-        self.figura_nova = FiguraNova()
+    # Método geral para usar as ferramentas
+    def usar_ferramenta(self, event):
+        self.view.canvas.unbind('<B1-Motion>')
+        self.view.canvas.unbind('<ButtonRelease-1>')
+         
+        if self.ferramentas.tipo_ferramenta == "borracha":
+            self.borracha.apagar(event, self.view.canvas, self.figuras)
+            self.view.canvas.bind('<B1-Motion>', lambda event: self.borracha.apagar(event, self.view.canvas, self.figuras))
 
-        if self.ferramentas == "lapis":
-            self.figura_nova = Lapis((event.x, event.y))
+        elif self.ferramentas.tipo_ferramenta == "balde_tinta":
+            self.balde_tinta.preencher(event, self.view.canvas, self.figuras, self.cores.preenchimento)
 
-        elif self.ferramentas == "linha":
-            self.figura_nova == Linha(event.x, event.y, event.x, event.y)
+        else:
+            # Atualiza os dados da nova figura
+            self.desenho_figura_nova.tipo = self.ferramentas.tipo_ferramenta
+            self.desenho_figura_nova.borda = self.cores.borda
+            self.desenho_figura_nova.preenchimento = self.cores.borda
 
-        elif self.ferramentas == "retangulo":
-            self.figura_nova = Retangulo(event.x, event.y, event.x, event.y)
-
-        elif self.ferramentas == "quadrado":
-            self.figura_nova = Retangulo(event.x, event.y, event.x, event.y)
-
-        elif self.ferramentas == "triangulo":
-            self.figura_nova = Triangulo(event.x, event.y, event.x, event.y)
-
-        elif self.ferramentas == "oval":
-            self.figura_nova = Oval(event.x, event.y, event.x, event.y)
-
-        elif self.ferramentas == "circulo":
-            self.figura_nova = Circulo(event.x, event.y, event.x, event.y)
-    
-    # Quando o mouse é movido
-    def atualizar_figura_nova(self, event):   
-        self.figura_nova.atualizar(event)
-
-        self.desenhar_figuras()
-        self.desenhar_figura_nova()
-    
-    # Quando o mouse é solto
-    def incluir_figura_nova(self, event): 
-        if not self.figura_nova.incompleta():
-            self.figuras.append(self.figura_nova)
-
-        self.desenhar_figuras()
-        self.figura_nova = None
+            # Cria e deseneha a nova figura
+            self.desenho_figura_nova.iniciar(event)
+            self.view.canvas.bind('<B1-Motion>', lambda event: self.desenho_figura_nova.atualizar(event, self.view.canvas, self.figuras))
+            self.view.canvas.bind('<ButtonRelease-1>', lambda event: self.desenho_figura_nova.incluir(event, self.view.canvas,self.figuras))

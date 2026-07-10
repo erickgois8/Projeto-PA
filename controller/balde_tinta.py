@@ -1,16 +1,17 @@
+from tkinter import *
+
+from model.figuras import Figuras
+from controller.desenho import Desenho
+
 class BaldeTinta:
-    def __init__(self):
+    def __init__(self, desenho: Desenho):
+        self.desenho = desenho
+        
+    def preencher(self, event: Event, canvas: Canvas, figuras: Figuras, cor_preenchimento: str):
+        ids = canvas.find_overlapping(event.x, event.y, event.x, event.y)
 
-        self.encontrar_figura = encontrar_figura
-        self.cor_preenchimento = cor_preenchimento
+        for figura in figuras.dados:
+            if figura.id in ids:
+                canvas.itemconfig(figura.id, fill=cor_preenchimento)
 
-    def preencher(self, event):
-        ids = self.canvas.find_overlapping(event.x, event.y, event.x, event.y)
-
-        for id_canvas in ids:
-            figura = self.encontrar_figura(id_canvas)
-
-        if figura:
-            figura.cor_preenchimento = self.cor_preenchimento
-
-        self.desenhar_figuras()
+        self.desenho.redesenhar_figuras(canvas, figuras)

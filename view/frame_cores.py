@@ -8,4 +8,4 @@ class FrameCores:
         self.frame.pack(padx=10, pady=(0, 30))
 
         # Colocando os botões de cores
-        self.botoes_formas = BotoesCores(self.frame)
+        self.botoes_cores = BotoesCores(self.frame)

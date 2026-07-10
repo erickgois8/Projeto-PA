@@ -16,3 +16,7 @@ class Janela:
         
         # Canvas
         self.area_desenho = AreaDesenho(self.root)
+
+    @property
+    def canvas(self):
+        return self.area_desenho.canvas

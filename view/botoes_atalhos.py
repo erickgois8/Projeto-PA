@@ -40,6 +40,7 @@ class BotoesAtalhos:
             border=1)
         self.btn_fig_preenchida.grid(row=1, column=0, columnspan=2, sticky="nsew", pady=(0, 132))
         
+        # Seletor de preenchimento vazio
         self.btn_figura_vazia = Button(
             master=root,
             bg="#C0C0C0",

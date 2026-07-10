@@ -419,11 +419,9 @@ class Menu():
     def preencher(self, event):
         ids = self.canva.find_overlapping(event.x, event.y, event.x, event.y)
 
-        for id_canvas in ids:
-            figura = self.encontrar_figura(id_canvas)
-
-        if figura:
-            figura.cor_preenchimento = self.cor_preenchimento
+        for figura in self.figuras:
+            if figura.id in ids:
+                figura.cor_preenchimento = self.cor_preenchimento
 
         self.desenhar_figuras()
 
@@ -506,9 +504,3 @@ class Menu():
             self.btn_sem_preenchimento.configure(image=self.img_btn_sem_preenchimento_ativo)
         else:
             self.btn_sem_preenchimento.configure(image=self.img_btn_sem_preenchimento)
-
-    def encontrar_figura(self, id_canvas):
-        for figura in self.figuras:
-            if figura.id == id_canvas:
-                return figura
-        return None

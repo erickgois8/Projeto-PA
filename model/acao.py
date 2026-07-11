@@ -1,2 +1,0 @@
-class Acao:
-    pass

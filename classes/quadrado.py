@@ -24,6 +24,8 @@ class Quadrado(Figura):
         lado = max(abs(self.dist_x), abs(self.dist_y)) 
         self.xf = self.xi + lado * (1 if self.dist_x >= 0 else -1) 
         self.yf = self.yi + lado * (1 if self.dist_y >= 0 else -1)
+
+        
         
     # Valida a figura (se os pontos inicial e final coincidem ou não)
     def incompleta(self):

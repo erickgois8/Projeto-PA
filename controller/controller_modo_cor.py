@@ -1,22 +1,19 @@
-from model.cores import Cores
 from view.janela import Janela
+from model.estado import Estado
 
 class ControllerModoCor:
-    def __init__(self, view: Janela, cores: Cores):
-        botoes_modo_cor = view.frame_lateral.frame_atalhos.botoes_atalhos
-
+    def __init__(self, view: Janela, estado: Estado):
         # Botão cor da borda
-        botoes_modo_cor.btn_cor_borda.config(
-            command=lambda: cores.selecionar_modo("borda"))
+        view.botoes_atalhos.botao_cor_borda.configure(
+            command=lambda: estado.selecionar_modo_cor("borda"))
 
         # Botão figura preenchida
-        botoes_modo_cor.btn_fig_preenchida.config(
-            command=lambda: cores.selecionar_modo("preenchimento"))
+        view.botoes_atalhos.botao_cor_preenchimento.configure(
+            command=lambda: estado.selecionar_modo_cor("preenchimento"))
 
         # Botão retira preenchimento
-        botoes_modo_cor.btn_figura_vazia.config(
-            command=lambda: cores.selecionar_modo("preenchimento"))
-        
+        view.botoes_atalhos.botao_sem_preenchimento.configure(
+            command=lambda: estado.selecionar_modo_cor("preenchimento"))
         
     # Atualiza o botão de cor de borda para a cor selecionada
     def atualiza_botao_borda(self, cor_borda):

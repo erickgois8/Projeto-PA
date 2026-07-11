@@ -1,15 +1,17 @@
-from dataclasses import dataclass, field
-from typing import List
-
 from model.figura import Figura
+from dataclasses import dataclass, field
 
-# Armazena, adiciona ou apaga a figura com base na lista de dados
+# Gerencia o armazenamento das figuras
 @dataclass
 class Figuras:
-    dados: List[Figura] = field(default_factory=list)
+    __dados: list[Figura] = field(default_factory=list)
 
+    @property
+    def acessar(self):
+        return self.__dados
+    
     def adicionar(self, figura):
-        self.dados.append(figura)
+        self.__dados.append(figura)
 
     def remover(self, figura):
-        self.dados.remove(figura)
+        self.__dados.remove(figura)

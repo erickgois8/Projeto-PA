@@ -14,17 +14,9 @@ class Quadrado(Figura):
     borda: str
     preenchimento: str
     
-    # espessura
+    # Espessura
     espessura: str
 
-    # Identifica a figura para desenho
-    id: int = None
-    
-# Valida a figura (se os pontos inicial e final coincidem ou não)
+    # Verifica a figura (evitando pontos)
     def incompleta(self):
         return (self.x1 == self.x2) and (self.y1 == self.y2)
-    
-# Pontos a serem usados no desenho
-    @property
-    def pontos(self):
-        return (self.x1, self.y1, self.x2, self.y2)

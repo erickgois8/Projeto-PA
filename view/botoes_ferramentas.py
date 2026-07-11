@@ -1,16 +1,16 @@
 from tkinter import *
 
 class BotoesFerramentas:
-    def __init__(self, root):
+    def __init__(self, frame_ferramentas):
         # Imagens dos Botões
-        self.img_btn_lapis = PhotoImage(file="images/lapis.png")
-        self.img_btn_borracha = PhotoImage(file="images/borracha.png")
-        self.img_btn_balde_tinta = PhotoImage(file="images/balde_tinta.png")
+        self.img_botao_lapis = PhotoImage(file="images/lapis.png")
+        self.img_botao_borracha = PhotoImage(file="images/borracha.png")
+        self.img_botao_balde_tinta = PhotoImage(file="images/balde_tinta.png")
 
         # Botão de Lápis
         self.botao_lapis = Button(
-            master=root,
-            image=self.img_btn_lapis,
+            master=frame_ferramentas,
+            image=self.img_botao_lapis,
             bg="#C0C0C0",
             relief=RAISED,
             activebackground="#808080",
@@ -19,8 +19,8 @@ class BotoesFerramentas:
     
         # Botão de Borracha
         self.botao_borracha = Button(
-            master=root,
-            image=self.img_btn_borracha,
+            master=frame_ferramentas,
+            image=self.img_botao_borracha,
             bg="#C0C0C0",
             relief=RAISED,
             activebackground="#808080",
@@ -29,8 +29,8 @@ class BotoesFerramentas:
 
         # Botão de Balde de Tinta
         self.botao_balde_tinta = Button(
-            master=root,
-            image=self.img_btn_balde_tinta,
+            master=frame_ferramentas,
+            image=self.img_botao_balde_tinta,
             bg="#C0C0C0",
             relief=RAISED,
             activebackground="#808080",

@@ -1,18 +1,16 @@
-from model.ferramentas import Ferramentas
 from view.janela import Janela
+from model.estado import Estado
 
 class ControllerFerramentas:
-    def __init__(self, view: Janela, ferramentas: Ferramentas):
-
+    def __init__(self, view: Janela, estado: Estado):
         # Botão de lápis
-        view.frame_lateral.frame_ferramentas.botoes_ferramentas.botao_lapis.config(
-            command=lambda: ferramentas.selecionar_ferramenta("lapis"))
+        view.botoes_ferramentas.botao_lapis.configure(
+            command=lambda: estado.selecionar_ferramenta("lapis"))
 
         # Botão de borracha
-        view.frame_lateral.frame_ferramentas.botoes_ferramentas.botao_borracha.config(
-            command=lambda: ferramentas.selecionar_ferramenta("borracha"))
+        view.botoes_ferramentas.botao_borracha.configure(
+            command=lambda: estado.selecionar_ferramenta("borracha"))
 
         # Botão de balde de tinta
-        view.frame_lateral.frame_ferramentas.botoes_ferramentas.botao_balde_tinta.config(
-            command=lambda: ferramentas.selecionar_ferramenta("balde_tinta"))
-        
+        view.botoes_ferramentas.botao_balde_tinta.configure(
+            command=lambda: estado.selecionar_ferramenta("balde_tinta"))

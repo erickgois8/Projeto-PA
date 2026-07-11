@@ -25,3 +25,4 @@ class Oval(Figura):
     # Valida a figura (se a elipse forma uma linha horizontal ou vertical ou se os pontos inicial e final coincidem)
     def incompleta(self):
         return (self.xi == self.xf or self.yi == self.yf)
+    ,

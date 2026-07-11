@@ -1,53 +1,55 @@
-from model.cores import Cores
 from view.janela import Janela
+from model.estado import Estado
 
 class ControllerCores:
-    def __init__(self, view: Janela, cores: Cores):
+    def __init__(self, view: Janela, estado: Estado):
 
         # Botão branco
-        view.frame_lateral.frame_cores.botoes_cores.botao_branco.config(
-            command=lambda: cores.selecionar_cor("branco", cores.modo))
+        view.botoes_cores.botao_branco.configure(
+            command=lambda: estado.selecionar_cor("#FFFFFF"))
 
         # Botão cinza
-        view.frame_lateral.frame_cores.botoes_cores.botao_cinza.config(
-            command=lambda: cores.selecionar_cor("cinza", cores.modo))
+        view.botoes_cores.botao_cinza.configure(
+            command=lambda: estado.selecionar_cor("#8F8E8E"))
 
         # Botão preto
-        view.frame_lateral.frame_cores.botoes_cores.botao_preto.config(
-            command=lambda: cores.selecionar_cor("preto", cores.modo))
+        view.botoes_cores.botao_preto.configure(
+            command=lambda: estado.selecionar_cor("#000000"))
 
         # Botão vermelho
-        view.frame_lateral.frame_cores.botoes_cores.botao_vermelho.config(
-            command=lambda: cores.selecionar_cor("vermelho", cores.modo))
+        view.botoes_cores.botao_vermelho.configure(
+            command=lambda: estado.selecionar_cor("#e12729"))
 
         # Botão laranja
-        view.frame_lateral.frame_cores.botoes_cores.botao_laranja.config(
-            command=lambda: cores.selecionar_cor("laranja", cores.modo))
+        view.botoes_cores.botao_laranja.configure(
+            command=lambda: estado.selecionar_cor("#f37324"))
 
         # Botão amarelo
-        view.frame_lateral.frame_cores.botoes_cores.botao_amarelo.config(
-            command=lambda: cores.selecionar_cor("amarelo", cores.modo))
+        view.botoes_cores.botao_amarelo.configure(
+            command=lambda: estado.selecionar_cor("#f8cc1b"))
 
         # Botão verde
-        view.frame_lateral.frame_cores.botoes_cores.botao_verde.config(
-            command=lambda: cores.selecionar_cor("verde", cores.modo))
+        view.botoes_cores.botao_verde.configure(
+            command=lambda: estado.selecionar_cor("#007f4e"))
 
         # Botão verde claro
-        view.frame_lateral.frame_cores.botoes_cores.botao_verde_claro.config(
-            command=lambda: cores.selecionar_cor("verde_claro", cores.modo))
+        view.botoes_cores.botao_verde_claro.configure(
+            command=lambda: estado.selecionar_cor("#72b043"))
 
         # Botão ciano
-        view.frame_lateral.frame_cores.botoes_cores.botao_ciano.config(
-            command=lambda: cores.selecionar_cor("ciano", cores.modo))
+        view.botoes_cores.botao_ciano.configure(
+            command=lambda: estado.selecionar_cor("#53d0b5"))
 
         # Botão azul
-        view.frame_lateral.frame_cores.botoes_cores.botao_azul.config(
-            command=lambda: cores.selecionar_cor("azul", cores.modo))
+        view.botoes_cores.botao_azul.configure(
+            command=lambda: estado.selecionar_cor("#1982c4"))
 
         # Botão roxo
-        view.frame_lateral.frame_cores.botoes_cores.botao_roxo.config(
-            command=lambda: cores.selecionar_cor("roxo", cores.modo))
+        view.botoes_cores.botao_roxo.configure(
+            command=lambda: estado.selecionar_cor("#6a4c93"))
 
         # Botão rosa
-        view.frame_lateral.frame_cores.botoes_cores.botao_rosa.config(
-            command=lambda: cores.selecionar_cor("rosa", cores.modo))
+        view.botoes_cores.botao_rosa.configure(
+            command=lambda: estado.selecionar_cor("#f49ac2"))
+        
+        

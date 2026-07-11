@@ -13,17 +13,9 @@ class Retangulo(Figura):
     borda: str
     preenchimento: str
     
-    # espessura
+    # Espessura
     espessura: str
-
-    # Identifica a figura para desenho
-    id: int = None
     
-     # Valida a figura (evitando pontos e retas)
+    # Verifica a figura (evitando pontos e retas)
     def incompleta(self):
         return (self.x1 == self.x2) or (self.y1 == self.y2)
-    
-    # Pontos a serem usados no desenho
-    @property
-    def pontos(self):
-        return (self.x1, self.y1, self.x2, self.y2)

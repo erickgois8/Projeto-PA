@@ -1,0 +1,2 @@
+class Borracha:
+    pass

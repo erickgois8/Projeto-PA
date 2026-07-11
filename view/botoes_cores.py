@@ -1,10 +1,10 @@
 from tkinter import *
 
 class BotoesCores:
-    def __init__(self, root):
+    def __init__(self, frame_cores):
         # Botão Branco
         self.botao_branco = Button(
-            master=root,
+            master=frame_cores,
             bg="#FFFFFF",
             relief=RAISED,
             activebackground="#808080",
@@ -13,16 +13,16 @@ class BotoesCores:
 
         # Botão Cinza
         self.botao_cinza = Button(
-            master=root,
+            master=frame_cores,
             bg="#8F8E8E",
             relief=RAISED,
             activebackground="#808080",
             borde=1)
         self.botao_cinza.grid(row=0, column=1)
 
-        #Botão Preto
+        # Botão Preto
         self.botao_preto = Button(
-            master=root,
+            master=frame_cores,
             bg="#000000",
             relief=RAISED,
             activebackground="#808080",
@@ -31,7 +31,7 @@ class BotoesCores:
 
         # Botão Vermelho
         self.botao_vermelho = Button(
-            master=root,
+            master=frame_cores,
             bg="#e12729",
             relief=RAISED,
             activebackground="#808080",
@@ -40,7 +40,7 @@ class BotoesCores:
 
         # Botão Laranja
         self.botao_laranja = Button(
-            master=root,
+            master=frame_cores,
             bg="#f37324",
             relief=RAISED,
             activebackground="#808080",
@@ -49,7 +49,7 @@ class BotoesCores:
 
         # Botão Amarelo
         self.botao_amarelo = Button(
-            master=root,
+            master=frame_cores,
             bg="#f8cc1b",
             relief=RAISED,
             activebackground="#808080",
@@ -58,7 +58,7 @@ class BotoesCores:
 
         # Botão Verde
         self.botao_verde = Button(
-            master=root,
+            master=frame_cores,
             bg="#007f4e",
             relief=RAISED,
             activebackground="#808080",
@@ -67,7 +67,7 @@ class BotoesCores:
 
         # Botão Verde Claro
         self.botao_verde_claro = Button(
-            master=root,
+            master=frame_cores,
             bg="#72b043",
             relief=RAISED,
             activebackground="#808080",
@@ -76,7 +76,7 @@ class BotoesCores:
 
         # Botão Ciano
         self.botao_ciano = Button(
-            master=root,
+            master=frame_cores,
             bg="#53d0b5",
             relief=RAISED,
             activebackground="#808080",
@@ -85,7 +85,7 @@ class BotoesCores:
 
         # Botão Azul
         self.botao_azul = Button(
-            master=root,
+            master=frame_cores,
             bg="#1982c4",
             relief=RAISED,
             activebackground="#808080",
@@ -94,7 +94,7 @@ class BotoesCores:
 
         # Botão Roxo
         self.botao_roxo = Button(
-            master=root,
+            master=frame_cores,
             bg="#6a4c93",
             relief=RAISED,
             activebackground="#808080",
@@ -103,7 +103,7 @@ class BotoesCores:
 
         # Botão Rosa
         self.botao_rosa = Button(
-            master=root,
+            master=frame_cores,
             bg="#f49ac2",
             relief=RAISED,
             activebackground="#808080",

@@ -17,6 +17,24 @@ class Janela:
         # Canvas
         self.area_desenho = AreaDesenho(self.root)
 
+    # ----- Para acesso rápido no controller ----- #
+
     @property
     def canvas(self):
         return self.area_desenho.canvas
+    
+    @property
+    def botoes_ferramentas(self):
+        return self.frame_lateral.frame_ferramentas.botoes_ferramentas
+    
+    @property
+    def botoes_formas(self):
+        return self.frame_lateral.frame_formas.botoes_formas
+    
+    @property
+    def botoes_cores(self):
+        return self.frame_lateral.frame_cores.botoes_cores
+    
+    @property
+    def botoes_atalhos(self):
+        return self.frame_lateral.frame_atalhos.botoes_atalhos

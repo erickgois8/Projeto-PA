@@ -8,7 +8,7 @@ from view.frame_atalhos import FrameAtalhos
 class FrameLateral:
     def __init__(self, root):
         # Frame principal próprio
-        self.frame = Frame(root, bg="#C0C0C0", width=119)
+        self.frame = Frame(root, bg="#C0C0C0", width=119, relief=RAISED, bd=1)
         self.frame.pack(side=LEFT, fill=Y)
 
         # Frame de ferramentas

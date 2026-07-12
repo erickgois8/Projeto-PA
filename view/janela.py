@@ -1,5 +1,6 @@
 from tkinter import *
 
+from view.frame_superior import FrameSuperior
 from view.frame_lateral import FrameLateral
 from view.area_desenho import AreaDesenho
 
@@ -13,6 +14,9 @@ class Janela:
 
         # Colocando frame lateral
         self.frame_lateral = FrameLateral(self.root)
+
+        # Colocando o frame superior
+        self.frame_superior = FrameSuperior(self.root)
         
         # Canvas
         self.area_desenho = AreaDesenho(self.root)

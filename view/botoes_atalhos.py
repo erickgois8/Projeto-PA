@@ -19,7 +19,7 @@ class BotoesAtalhos:
 
         self.botao_cor_borda = Button(
             master=frame_atalhos,
-            bg="#C0C0C0",
+            bg="#000000",
             relief=RAISED,
             activebackground="#808080",
             border=1)

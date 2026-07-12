@@ -39,7 +39,5 @@ class Estado:
         elif self.__modo_cor == "preenchimento":
             self.__cor_preenchimento = cor
 
-    def mudar_espessura(self, espessura):
-        self.__espessura = espessura
-
-    
+    def limpar_cor(self):
+        self.__cor_preenchimento = None  

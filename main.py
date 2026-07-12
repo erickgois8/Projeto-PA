@@ -1,5 +1,7 @@
-from classes.menu import Menu
+from view.janela import Janela
+from controller.controller_principal import ControllerPrincipal
 
-janela = Menu()
+janela = Janela()
+controlador = ControllerPrincipal(janela)
 
 janela.root.mainloop()

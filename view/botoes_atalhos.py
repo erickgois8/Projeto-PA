@@ -5,6 +5,8 @@ class BotoesAtalhos:
         # Imagens dos Botões
         self.img_botao_desfazer = PhotoImage(file="images/desfazer.png")
         self.img_botao_refazer = PhotoImage(file="images/refazer.png")
+        self.img_botao_sem_preenchimento_ativo = PhotoImage(file="images/sem_preenchimento_ativo.png")
+        self.img_botao_sem_preenchimento = PhotoImage(file="images/sem_preenchimento.png")
 
         # Seletor modo cor da borda
         """self.lbl_borda = Label(
@@ -46,6 +48,7 @@ class BotoesAtalhos:
             bg="#C0C0C0",
             relief=RAISED,
             activebackground="#808080",
+            image=self.img_botao_sem_preenchimento_ativo,
             border=1)
         self.botao_sem_preenchimento.grid(row=1, column=2, sticky="nsew", pady=(0, 132))
 

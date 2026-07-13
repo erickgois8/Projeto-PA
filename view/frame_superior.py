@@ -8,4 +8,4 @@ class FrameSuperior:
         self.frame.pack(side=TOP, fill=X)
 
         # Colocando os botões de salvar e abrir
-        self.botoes_salver = BotoesSalvar(self.frame)
+        self.botoes_salvar = BotoesSalvar(self.frame)

@@ -42,3 +42,7 @@ class Janela:
     @property
     def botoes_atalhos(self):
         return self.frame_lateral.frame_atalhos.botoes_atalhos
+    
+    @property
+    def botoes_salvar(self):
+        return self.frame_superior.botoes_salvar

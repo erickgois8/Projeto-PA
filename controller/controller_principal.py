@@ -10,6 +10,8 @@ from state.ferramenta_quadrado import FerramentaQuadrdo
 from state.ferramenta_oval import FerramentaOval
 from state.ferramenta_circulo import FerramentaCirculo
 
+from controller.arquivos import Arquivos
+
 class ControllerPrincipal:
     def __init__(self, view: Janela):
         # View (interface)
@@ -23,6 +25,9 @@ class ControllerPrincipal:
 
         # Armazenamento das figuras
         self.figuras = Figuras()
+
+        # Salva e abre arquivos
+        self.arquivos = Arquivos(self.figuras, self.desenho)
         
         # Configurando as ferramentas
         self.ferramenta_lapis = FerramentaLapis(self.desenho, self.figuras, self.estado)

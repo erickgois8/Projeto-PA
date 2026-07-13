@@ -4,11 +4,11 @@ from controller.controller_cores import ControllerCores
 from controller.controller_modo_cor import ControllerModoCor
 
 from view.janela import Janela
-from model.estado import Estado
+from controller.controller_principal import ControllerPrincipal
 
 class ControllerBotoes:
-    def __init__(self, view: Janela, estado: Estado):
-        self.controller_ferramentas = ControllerFerramentas(view, estado)
-        self.controller_formas = ControllerFormas(view, estado)
-        self.controller_cores = ControllerCores(view, estado)
-        self.controller_modo_cor = ControllerModoCor(view, estado)
+    def __init__(self, view: Janela, controller: ControllerPrincipal):
+        self.controller_ferramentas = ControllerFerramentas(view, controller)
+        self.controller_formas = ControllerFormas(view, controller)
+        self.controller_cores = ControllerCores(view, controller)
+        self.controller_modo_cor = ControllerModoCor(view, controller)

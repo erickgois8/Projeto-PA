@@ -1,5 +1,12 @@
 from tkinter import *
-from controller.controller_principal import Figuras, Figura, Lapis, Linha, Retangulo, Quadrado, Oval, Circulo
+from model.figuras import Figuras
+from model.figura import Figura
+from model.lapis import Lapis
+from model.linha import Linha
+from model.retangulo import Retangulo
+from model.quadrado import Quadrado
+from model.oval import Oval
+from model.circulo import Circulo
 
 class Desenho:
     def __init__(self, canvas: Canvas):

@@ -7,7 +7,7 @@ class ControllerFerramentas:
         view.botoes_ferramentas.botao_lapis.configure(command=lambda: controller.selecionar_ferramenta(controller.ferramenta_lapis))
 
         # Botão de borracha
-        view.botoes_ferramentas.botao_borracha.configure(command=lambda: controller.selecionar_ferramenta(controller.ferramenta_lapis))
+        view.botoes_ferramentas.botao_borracha.configure(command=lambda: controller.selecionar_ferramenta(controller.ferramenta_borracha))
 
         # Botão de balde de tinta
-        view.botoes_ferramentas.botao_balde_tinta.configure(command=lambda: controller.selecionar_ferramenta(controller.ferramenta_lapis))
+        view.botoes_ferramentas.botao_balde_tinta.configure(command=lambda: controller.selecionar_ferramenta(controller.ferramenta_balde_tinta))

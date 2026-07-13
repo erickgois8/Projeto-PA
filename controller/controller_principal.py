@@ -9,6 +9,8 @@ from state.ferramenta_retangulo import FerramentaRetangulo
 from state.ferramenta_quadrado import FerramentaQuadrdo
 from state.ferramenta_oval import FerramentaOval
 from state.ferramenta_circulo import FerramentaCirculo
+from state.ferramenta_borracha import FerramentaBorracha
+from state.ferramenta_balde_tinta import FerramentaBaldeTinta
 
 from controller.arquivos import Arquivos
 
@@ -36,6 +38,8 @@ class ControllerPrincipal:
         self.ferramenta_quadrado = FerramentaQuadrdo(self.desenho, self.figuras, self.estado)
         self.ferramenta_oval = FerramentaOval(self.desenho, self.figuras, self.estado)
         self.ferramenta_circulo = FerramentaCirculo(self.desenho, self.figuras, self.estado)
+        self.ferramenta_borracha = FerramentaBorracha(self.desenho, self.figuras, self.view.canvas)
+        self.ferramenta_balde_tinta = FerramentaBaldeTinta(self.desenho, self.figuras, self.estado, self.view.canvas)
 
         # Ferramenta atual
         self.ferramenta_atual = self.ferramenta_lapis

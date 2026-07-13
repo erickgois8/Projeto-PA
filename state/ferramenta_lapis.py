@@ -19,6 +19,7 @@ class FerramentaLapis(Ferramenta):
         self.desenho.desenhar_figura(self.lapis_novo, dash=(10, 5))
 
     def mouse_solto(self, event):
-        if not self.lapis_novo.incompleta():
-            self.figuras.adicionar(self.lapis_novo)
-            self.desenho.desenhar_figuras(self.figuras)
+        if len(self.lapis_novo.pontos) == 1:
+            self.lapis_novo.pontos.append(self.lapis_novo.pontos[0])
+        self.figuras.adicionar(self.lapis_novo)
+        self.desenho.desenhar_figuras(self.figuras)

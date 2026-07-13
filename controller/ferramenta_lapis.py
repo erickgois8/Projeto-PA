@@ -2,14 +2,16 @@ from dataclasses import dataclass
 from controller.ferramenta import Ferramenta
 from model.lapis import Lapis
 from model.figuras import Figuras
+from model.estado import Estado
 
 @dataclass
 class FerramentaLapis(Ferramenta):
     figuras: Figuras
+    estado: Estado
     lapis_novo: Lapis = None
 
     def mouse_pressionado(self, event):
-        self.lapis_novo = Lapis([(event.x, event.y)])
+        self.lapis_novo = Lapis([(event.x, event.y)], self.estado.cor_borda, self.estado.espessura)
 
     def mouse_arrastado(self, event):
         self.lapis_novo.pontos.append((event.x, event.y))

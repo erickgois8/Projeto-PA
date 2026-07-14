@@ -46,3 +46,7 @@ class Janela:
     @property
     def botoes_salvar(self):
         return self.frame_superior.botoes_salvar
+    
+    @property
+    def botao_circulo_cromatico(self):
+        return self.frame_lateral.frame_cores.botao_cromatico

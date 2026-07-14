@@ -1,5 +1,6 @@
 from tkinter import *
 from view.botoes_cores import BotoesCores
+from view.botao_circulo_cromatico import BotaoCromatico
 
 # Define frame de botões de cores
 class FrameCores:
@@ -9,3 +10,5 @@ class FrameCores:
 
         # Colocando os botões de cores
         self.botoes_cores = BotoesCores(self.frame)
+        self.botao_cromatico = BotaoCromatico(self.frame)
+

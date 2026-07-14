@@ -1,6 +1,8 @@
 from view.janela import Janela
 from controller.controller_principal import ControllerPrincipal
 from tkinter import *
+from tkinter.colorchooser import askcolor
+
 
 class ControllerCores:
     def __init__(self, view: Janela, controller: ControllerPrincipal):
@@ -44,6 +46,11 @@ class ControllerCores:
         # Botão rosa
         view.botoes_cores.botao_rosa.configure(command=lambda: self.trocar_cor(view, controller, "#f49ac2"))
 
+        # Botão Círculo Cromático
+        view.botao_circulo_cromatico.botao_cromatico.configure(command=lambda: self.escolher_cor(view, controller))
+
+
+
     # Junta as funções de atualizar botão de cor de borda e de preenchimento
     def trocar_cor(self, view: Janela, controller: ControllerPrincipal, cor: str):
         if controller.estado.modo_cor == "borda":
@@ -74,4 +81,12 @@ class ControllerCores:
         else:
             view.botoes_atalhos.botao_cor_preenchimento.configure(bg=controller.estado.cor_preenchimento)
         
+    def escolher_cor(self, view: Janela, controller: ControllerPrincipal):
+    # Abre o seletor de cores do tkinter
+        cor_selecionada = askcolor()
+    
+    # cor_selecionada[1] contém a string Hexadecimal (ex: "#ff0000")
+        if cor_selecionada and cor_selecionada[1]:
+            self.trocar_cor(view, controller, cor_selecionada[1])
+
         

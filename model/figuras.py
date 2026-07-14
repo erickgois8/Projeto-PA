@@ -6,7 +6,6 @@ from dataclasses import dataclass, field
 class Figuras:
     __dados: list[Figura] = field(default_factory=list)
 
-    @property
     def acessar(self):
         return self.__dados
     

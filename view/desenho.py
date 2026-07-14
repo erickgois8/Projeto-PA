@@ -42,5 +42,5 @@ class Desenho:
         self.canvas.delete("all")
 
         # Redesenha cada figura no canvas
-        for figura in figuras.acessar:
+        for figura in figuras.acessar():
             self.desenhar_figura(figura)

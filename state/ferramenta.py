@@ -16,3 +16,6 @@ class Ferramenta(ABC):
 
     def mouse_solto(self, event):
         pass
+
+    def finalizar(self, event):
+        pass

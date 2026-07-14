@@ -17,3 +17,6 @@ class ControllerFormas:
         
         # Botão retangulo
         view.botoes_formas.botao_retangulo.configure(command=lambda: controller.selecionar_ferramenta(controller.ferramenta_retangulo))
+
+        # Botão polígono
+        view.botoes_formas.botao_poligono.configure(command=lambda: controller.selecionar_ferramenta(controller.ferramenta_poligono))

@@ -18,6 +18,8 @@ class BotoesAtalhos:
         self.lbl_borda.grid(row=0, column=0, columnspan=3)"""
 
         self.botao_cor_borda = Button(
+            text="Borda",
+            font=("Arial", 8),
             master=frame_atalhos,
             bg="#000000",
             relief=RAISED,
@@ -35,6 +37,8 @@ class BotoesAtalhos:
         self.lbl_preenchimento.grid(row=3, column=0, columnspan=3)"""
 
         self.botao_cor_preenchimento = Button(
+            text="Preenchimento",
+            font=("Arial", 6),
             master=frame_atalhos,
             bg="#C0C0C0",
             relief=RAISED,

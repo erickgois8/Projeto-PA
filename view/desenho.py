@@ -7,6 +7,7 @@ from model.retangulo import Retangulo
 from model.quadrado import Quadrado
 from model.oval import Oval
 from model.circulo import Circulo
+from model.poligono import Poligono
 
 class Desenho:
     def __init__(self, canvas: Canvas):
@@ -36,6 +37,8 @@ class Desenho:
         elif isinstance(figura, Circulo):
             figura.id = self.canvas.create_oval(figura.x1 - figura.raio, figura.y1 - figura.raio, figura.x1 + figura.raio, figura.y1 + figura.raio,
                                                 outline=figura.borda, fill=figura.preenchimento, width=figura.espessura, dash=dash)
+        elif isinstance(figura, Poligono):
+            figura.id = self.canvas.create_polygon(*figura.pontos, outline=figura.borda, fill=figura.preenchimento or "", width=figura.espessura, dash=dash)
     
     def desenhar_figuras(self, figuras: Figuras):
         # Apaga a tela

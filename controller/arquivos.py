@@ -22,7 +22,7 @@ class Arquivos:
             if file_path:
                 try:
                     with open(file_path, "wb") as arquivo:
-                        pickle.dump(self.figuras.acessar, arquivo)
+                        pickle.dump(self.figuras.acessar(), arquivo)
                     messagebox.showinfo(
                         "Sucesso", "Todos os seus dados foram salvos com sucesso!")
                 except Exception as e:
@@ -41,8 +41,12 @@ class Arquivos:
                 with open(file_path, "rb") as arquivo:
                     loaded_data = pickle.load(arquivo)
 
-                    for figura in loaded_data:
-                        self.desenho.desenhar_figura(figura)
+                self.figuras.acessar().clear()
+
+                for figura in loaded_data:
+                    self.figuras.adicionar(figura)
+
+                self.desenho.desenhar_figuras(self.figuras)
 
                 messagebox.showinfo(
                     "Dados carregados", "Os seus dados foram importados com sucesso na sua área de trabalho."

@@ -9,14 +9,6 @@ class BotoesAtalhos:
         self.img_botao_sem_preenchimento = PhotoImage(file="images/sem_preenchimento.png")
 
         # Seletor modo cor da borda
-        """self.lbl_borda = Label(
-            master=root,
-            text="COR DE BORDA",
-            bg="#C0C0C0",
-            fg="#000000",
-            font=("Arial", 7, "bold"))
-        self.lbl_borda.grid(row=0, column=0, columnspan=3)"""
-
         self.botao_cor_borda = Button(
             text="Borda",
             font=("Arial", 8),
@@ -28,14 +20,6 @@ class BotoesAtalhos:
         self.botao_cor_borda.grid(row=0, column=0, columnspan=3, sticky="nsew", pady=(0, 10))
 
         # Seletor modo preenchimento
-        """self.lbl_preenchimento = Label(
-            master=root,
-            text="PREENCHIMENTO",
-            bg="#C0C0C0",
-            fg="#000000",
-            font=("Arial", 7, "bold"))
-        self.lbl_preenchimento.grid(row=3, column=0, columnspan=3)"""
-
         self.botao_cor_preenchimento = Button(
             text="Preenchimento",
             font=("Arial", 6),

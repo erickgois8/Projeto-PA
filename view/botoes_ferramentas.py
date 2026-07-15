@@ -6,6 +6,7 @@ class BotoesFerramentas:
         self.img_botao_lapis = PhotoImage(file="images/lapis.png")
         self.img_botao_borracha = PhotoImage(file="images/borracha.png")
         self.img_botao_balde_tinta = PhotoImage(file="images/balde_tinta.png")
+        self.img_botao_selecao = PhotoImage(file="images/selecao.png")
 
         # Botão de Lápis
         self.botao_lapis = Button(
@@ -36,3 +37,13 @@ class BotoesFerramentas:
             activebackground="#808080",
             border=1)
         self.botao_balde_tinta.grid(row=0, column=2)
+
+        # Botão de seleção
+        self.botao_selecao= Button(
+            master=frame_ferramentas,
+            image=self.img_botao_selecao,
+            bg="#C0C0C0",
+            relief=RAISED,
+            activebackground= "#808080",
+            borde=1)
+        self.botao_selecao.grid(row=1, column=0)

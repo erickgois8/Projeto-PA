@@ -12,6 +12,7 @@ from state.ferramenta_circulo import FerramentaCirculo
 from state.ferramenta_borracha import FerramentaBorracha
 from state.ferramenta_balde_tinta import FerramentaBaldeTinta
 from state.ferramenta_poligono import FerramentaPoligono
+from state.ferramenta_selecao import FerramentaSelecao
 
 from controller.arquivos import Arquivos
 
@@ -42,6 +43,7 @@ class ControllerPrincipal:
         self.ferramenta_poligono = FerramentaPoligono(self.desenho, self.figuras, self.estado)
         self.ferramenta_borracha = FerramentaBorracha(self.desenho, self.figuras, self.view.canvas)
         self.ferramenta_balde_tinta = FerramentaBaldeTinta(self.desenho, self.figuras, self.estado, self.view.canvas)
+        self.ferramenta_selecao = FerramentaSelecao(self.desenho, self.figura)
 
         # Ferramenta atual
         self.ferramenta_atual = self.ferramenta_lapis

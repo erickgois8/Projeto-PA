@@ -11,3 +11,6 @@ class ControllerFerramentas:
 
         # Botão de balde de tinta
         view.botoes_ferramentas.botao_balde_tinta.configure(command=lambda: controller.selecionar_ferramenta(controller.ferramenta_balde_tinta))
+
+        # Botão de seleção
+        view.botoes_ferramentas.botao_selecao.configure(command= lambda: controller.selecionar_ferramenta(controller.ferramenta_selecao))

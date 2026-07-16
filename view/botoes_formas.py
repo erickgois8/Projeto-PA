@@ -9,6 +9,7 @@ class BotoesFormas:
         self.img_botao_oval = PhotoImage(file="images/oval.png")
         self.img_botao_quadrado = PhotoImage(file="images/quadrado.png")
         self.img_botao_retangulo = PhotoImage(file="images/retangulo.png")
+        self.img_botao_triangulo= PhotoImage(file="images/triangulo.png")
         self.img_botao_poligono = PhotoImage(file="images/poligono.png")
 
         # Botão de Linha
@@ -61,12 +62,22 @@ class BotoesFormas:
             border=1)
         self.botao_retangulo.grid(row=1, column=1)
 
-        # Botão de Poligonos
+        # Botão de Triângulo
         self.botao_triangulo = Button(
             master=frame_formas,
-            image=self.img_botao_poligono,
+            image=self.img_botao_triangulo,
             bg= "#C0C0C0",
             relief=RAISED,
             activebackground="#808080",
             border=1)
         self.botao_triangulo.grid(row=1, column=2)
+
+        # Botão de Polígono
+        self.botao_poligono = Button(
+            master=frame_formas,
+            image= self.img_botao_poligono,
+            bg="#C0C0C0",
+            relief=RAISED,
+            activebackground="#808080",
+            borde=1)
+        self.botao_poligono.grid(row=2, column=0)

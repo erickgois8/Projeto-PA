@@ -13,11 +13,18 @@ class FerramentaBaldeTinta(Ferramenta):
     def mouse_pressionado(self, event):
         ids = self.canvas.find_overlapping(event.x, event.y, event.x, event.y)
 
-        for figura in self.figuras.acessar():
-            if figura.id in ids:
-                figura.cor_preenchimento = self.estado.cor_preenchimento
+        # O último id retornado pelo canvas é o desenho que está por cima. Assim, o balde altera apenas a figura clicada
+        if not ids:
+            return
 
-        self.desenho.desenhar_figuras(self.figuras)
+        id_figura = ids[-1]
+
+        for figura in self.figuras.acessar():
+            # Linhas e lápis não possuem preenchimento, portanto não devem receber uma cor de preenchimento.
+            if figura.id == id_figura and hasattr(figura, "preenchimento"):
+                figura.preenchimento = self.estado.cor_preenchimento
+                self.desenho.desenhar_figuras(self.figuras)
+                return
 
     def mouse_arrastado(self, event):
         return

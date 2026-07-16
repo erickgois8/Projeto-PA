@@ -39,7 +39,7 @@ class Desenho:
                                                 outline=figura.borda, fill=figura.preenchimento, width=figura.espessura, dash=dash)
         elif isinstance(figura, Triangulo):
             figura.id = self.canvas.create_polygon(figura.x1, figura.y1, figura.x2, figura.y2, figura.x3, figura.y3,
-                                                   outline=figura.borda, fill=figura.preenchimento, width=figura.espessura, dash=dash)
+                                                   outline=figura.borda,fill=figura.preenchimento or "",width=figura.espessura, dash=dash)
 
     def desenhar_figuras(self, figuras: Figuras):
         # Apaga a tela

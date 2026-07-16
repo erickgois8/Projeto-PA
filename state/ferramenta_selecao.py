@@ -73,6 +73,8 @@ class FerramentaSelecao(Ferramenta):
         self.ini_x = None
         self.ini_y = None
 
+
+# -------------------- OPERAÇÕES COM FIGURA SELECIONADA -------------------- #
     # Apaga a figura selecionada, se houver alguma
     def apagar_figura_selecionada(self, event):
         if self.figura_selecionada is not None:
@@ -93,3 +95,19 @@ class FerramentaSelecao(Ferramenta):
             self.desenho.mover_figura(figura_copiada, 10, 10)
             self.figuras.adicionar(figura_copiada)
             self.desenho.desenhar_figuras(self.figuras)
+
+    # Move a figura selecionada para frente, se houver
+    def selecionada_para_frente(self, event):
+        self.figuras.mover_para_frente(self.figura_selecionada)
+
+    # Move a figura selecionada para trás, se houver
+    def selecionada_para_tras(self, event):
+        self.figuras.mover_para_tras(self.figura_selecionada)
+
+    # Move a figura selecionada para o topo, se houver
+    def selecionada_para_topo(self, event):
+        self.figuras.mover_para_topo(self.figura_selecionada)
+
+    # Move a figura selecionada para o fundo, se houver
+    def selecionada_para_fundo(self, event):
+        self.figuras.mover_para_fundo(self.figura_selecionada)

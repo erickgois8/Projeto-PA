@@ -57,6 +57,10 @@ class ControllerPrincipal:
         self.view.root.bind('<Delete>', self.ferramenta_selecao.apagar_figura_selecionada)
         self.view.root.bind('<Control-c>', self.ferramenta_selecao.copiar_figura_selecionada)
         self.view.root.bind('<Control-v>', self.ferramenta_selecao.colar_figura_buffer)
+        self.view.root.bind('<Right>', self.ferramenta_selecao.selecionada_para_frente)
+        self.view.root.bind('<Left>', self.ferramenta_selecao.selecionada_para_tras)
+        self.view.root.bind('<Up>', self.ferramenta_selecao.selecionada_para_topo)
+        self.view.root.bind('<Down>', self.ferramenta_selecao.selecionada_para_fundo)
 
     # Para mudar de ferramenta        
     def selecionar_ferramenta(self, ferramenta):

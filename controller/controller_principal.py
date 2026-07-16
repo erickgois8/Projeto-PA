@@ -55,6 +55,7 @@ class ControllerPrincipal:
 
         # Teclas
         self.view.root.bind('<Delete>', self.ferramenta_selecao.apagar_figura_selecionada)
+        self.view.root.bind('<BackSpace>', self.ferramenta_selecao.apagar_figura_selecionada)
         self.view.root.bind('<Control-c>', self.ferramenta_selecao.copiar_figura_selecionada)
         self.view.root.bind('<Control-v>', self.ferramenta_selecao.colar_figura_buffer)
         self.view.root.bind('<Right>', self.ferramenta_selecao.selecionada_para_frente)
@@ -63,8 +64,10 @@ class ControllerPrincipal:
         self.view.root.bind('<Down>', self.ferramenta_selecao.selecionada_para_fundo)
 
     # Para mudar de ferramenta        
-    def selecionar_ferramenta(self, ferramenta):
+    def selecionar_ferramenta(self, ferramenta, cursor=None):
         self.ferramenta_atual = ferramenta
+        if cursor is not None:
+            self.view.canvas.configure(cursor=cursor)
 
     # Usa a ferramenta a partir dos eventos de mouse
     def mouse_pressionado(self, event):

@@ -22,4 +22,4 @@ class FerramentaLinha(Ferramenta):
     def mouse_solto(self, event):
         if not self.linha_nova.incompleta():
             self.figuras.adicionar(self.linha_nova)
-            self.desenho.desenhar_figuras(self.figuras)
+        self.desenho.desenhar_figuras(self.figuras)

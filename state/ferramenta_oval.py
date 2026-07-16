@@ -22,4 +22,4 @@ class FerramentaOval(Ferramenta):
     def mouse_solto(self, event):
         if not self.oval_novo.incompleta():
             self.figuras.adicionar(self.oval_novo)
-            self.desenho.desenhar_figuras(self.figuras)
+        self.desenho.desenhar_figuras(self.figuras)

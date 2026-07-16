@@ -11,11 +11,10 @@ class Ferramenta(ABC):
     def mouse_pressionado(self, event):
         pass
 
+    @abstractmethod
     def mouse_arrastado(self, event):
         pass
 
+    @abstractmethod
     def mouse_solto(self, event):
-        pass
-
-    def finalizar(self, event):
         pass

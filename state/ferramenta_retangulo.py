@@ -21,4 +21,4 @@ class FerramentaRetangulo(Ferramenta):
     def mouse_solto(self, event):
         if not self.retangulo_novo.incompleta():
             self.figuras.adicionar(self.retangulo_novo)
-            self.desenho.desenhar_figuras(self.figuras)
+        self.desenho.desenhar_figuras(self.figuras)

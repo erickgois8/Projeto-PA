@@ -2,7 +2,7 @@ from view.janela import Janela
 from controller.controller_principal import ControllerPrincipal
 from tkinter import *
 
-class ControllerModoCor:
+class ControllerBotoesModoCor:
     def __init__(self, view: Janela, controller: ControllerPrincipal):
         self.img_botao_sem_preenchimento_ativo = PhotoImage(file="images/sem_preenchimento_ativo.png")
         self.img_botao_sem_preenchimento = PhotoImage(file="images/sem_preenchimento.png")
@@ -16,19 +16,42 @@ class ControllerModoCor:
         # Botão retira preenchimento
         view.botoes_atalhos.botao_sem_preenchimento.configure(command=lambda: self.limpar_preenchimento(view, controller))
 
+
+
+
+
+
+
+
+
+
+
+    # Método para limpar a cor de preenchimento da figura selecionada
     def limpar_preenchimento(self, view: Janela, controller: ControllerPrincipal):
         controller.estado.limpar_cor()
         
         self.atualiza_botao_sem_preenchimento(view, controller)
         self.atualiza_botao_preenchimento(view, controller)
 
-    # Junta as funções de atualizar botão de cor de borda e de preenchimento
+    # Método para trocar o modo de cor (borda ou preenchimento) da figura selecionada
     def trocar_modo_cor(self, view: Janela, controller: ControllerPrincipal, modo_cor: str):
         controller.estado.selecionar_modo_cor(modo_cor)
         
         self.atualiza_botao_borda(view, controller)
         self.atualiza_botao_preenchimento(view, controller)
-        
+
+
+
+
+
+
+
+
+
+
+
+# -------------------- MÉTODOS AUXILIARES -------------------- #
+
     # Atualiza o botão de cor de borda para a cor selecionada
     def atualiza_botao_borda(self, view: Janela, controller: ControllerPrincipal):
         view.botoes_atalhos.botao_cor_borda.configure(bg=controller.estado.cor_borda)
@@ -45,3 +68,6 @@ class ControllerModoCor:
             view.botoes_atalhos.botao_sem_preenchimento.configure(image=self.img_botao_sem_preenchimento_ativo)
         else:
             view.botoes_atalhos.botao_sem_preenchimento.configure(image=self.img_botao_sem_preenchimento)
+
+    def trocar_cursor(self, cursor):
+        return

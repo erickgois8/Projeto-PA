@@ -1,7 +1,7 @@
 from view.janela import Janela
 from controller.controller_principal import ControllerPrincipal
 
-class ControllerFerramentas:
+class ControllerBotoesFerramentas:
     def __init__(self, view: Janela, controller: ControllerPrincipal):
         # Botão de lápis
         view.botoes_ferramentas.botao_lapis.configure(command=lambda: controller.selecionar_ferramenta(controller.ferramenta_lapis))
@@ -14,3 +14,6 @@ class ControllerFerramentas:
 
         # Botão de seleção
         view.botoes_ferramentas.botao_selecao.configure(command= lambda: controller.selecionar_ferramenta(controller.ferramenta_selecao))
+
+    def trocar_cursor(self, cursor):
+        return

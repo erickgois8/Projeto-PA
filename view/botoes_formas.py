@@ -62,11 +62,11 @@ class BotoesFormas:
         self.botao_retangulo.grid(row=1, column=1)
 
         # Botão de Poligonos
-        self.botao_poligono = Button(
+        self.botao_triangulo = Button(
             master=frame_formas,
             image=self.img_botao_poligono,
             bg= "#C0C0C0",
             relief=RAISED,
             activebackground="#808080",
             border=1)
-        self.botao_poligono.grid(row=1, column=2)
+        self.botao_triangulo.grid(row=1, column=2)

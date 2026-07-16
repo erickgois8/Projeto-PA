@@ -11,7 +11,7 @@ from state.ferramenta_oval import FerramentaOval
 from state.ferramenta_circulo import FerramentaCirculo
 from state.ferramenta_borracha import FerramentaBorracha
 from state.ferramenta_balde_tinta import FerramentaBaldeTinta
-from state.ferramenta_poligono import FerramentaPoligono
+from state.ferramenta_triangulo import FerramentaTriangulo
 from state.ferramenta_selecao import FerramentaSelecao
 
 from controller.arquivos import Arquivos
@@ -40,19 +40,23 @@ class ControllerPrincipal:
         self.ferramenta_quadrado = FerramentaQuadrdo(self.desenho, self.figuras, self.estado)
         self.ferramenta_oval = FerramentaOval(self.desenho, self.figuras, self.estado)
         self.ferramenta_circulo = FerramentaCirculo(self.desenho, self.figuras, self.estado)
-        self.ferramenta_poligono = FerramentaPoligono(self.desenho, self.figuras, self.estado)
+        self.ferramenta_triangulo = FerramentaTriangulo(self.desenho, self.figuras, self.estado)
         self.ferramenta_borracha = FerramentaBorracha(self.desenho, self.figuras, self.view.canvas)
         self.ferramenta_balde_tinta = FerramentaBaldeTinta(self.desenho, self.figuras, self.estado, self.view.canvas)
-        self.ferramenta_selecao = FerramentaSelecao(self.desenho, self.figura)
+        self.ferramenta_selecao = FerramentaSelecao(self.desenho, self.figuras, self.estado, self.view.canvas)
 
         # Ferramenta atual
         self.ferramenta_atual = self.ferramenta_lapis
 
-        # Responde aos eventos de mouse
+        # Eventos de mouse
         self.view.canvas.bind('<ButtonPress-1>', self.mouse_pressionado)
         self.view.canvas.bind('<B1-Motion>', self.mouse_arrastado)
         self.view.canvas.bind('<ButtonRelease-1>', self.mouse_solto)
-        self.view.canvas.bind('<ButtonPress-3>', self.mouse_finalizado)
+
+        # Teclas
+        self.view.root.bind('<Delete>', self.ferramenta_selecao.apagar_figura_selecionada)
+        self.view.root.bind('<Control-c>', self.ferramenta_selecao.copiar_figura_selecionada)
+        self.view.root.bind('<Control-v>', self.ferramenta_selecao.colar_figura_buffer)
 
     # Para mudar de ferramenta        
     def selecionar_ferramenta(self, ferramenta):
@@ -67,6 +71,3 @@ class ControllerPrincipal:
 
     def mouse_solto(self, event):
         self.ferramenta_atual.mouse_solto(event)
-
-    def mouse_finalizado(self, event):
-        self.ferramenta_atual.finalizar(event)

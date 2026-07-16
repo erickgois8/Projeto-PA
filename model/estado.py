@@ -3,7 +3,7 @@ class Estado:
         self.__modo_cor = "borda"
         self.__cor_borda = "#000000"
         self.__cor_preenchimento = None
-        self.__espessura = 3
+        self.__espessura = 2
     
     @property
     def modo_cor(self):

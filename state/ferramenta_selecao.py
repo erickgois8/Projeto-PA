@@ -37,7 +37,6 @@ class FerramentaSelecao(Ferramenta):
             self.ini_y = event.y
 
         else:
-            self.limpar_selecao()
             return
 
     # Move a figura selecionada de acordo com o movimento do mouse

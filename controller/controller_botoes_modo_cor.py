@@ -1,5 +1,6 @@
 from view.janela import Janela
 from controller.controller_principal import ControllerPrincipal
+from state.ferramenta_selecao import FerramentaSelecao
 from tkinter import *
 
 class ControllerBotoesModoCor:
@@ -14,11 +15,7 @@ class ControllerBotoesModoCor:
         view.botoes_atalhos.botao_cor_preenchimento.configure(command=lambda: self.trocar_modo_cor(view, controller, "preenchimento"))
 
         # Botão retira preenchimento
-        view.botoes_atalhos.botao_sem_preenchimento.configure(command=lambda: self.limpar_preenchimento(view, controller))
-
-
-
-
+        view.botoes_atalhos.botao_sem_preenchimento.configure(command=lambda: self.limpar_preenchimento(view, controller, controller.ferramenta_selecao))
 
 
 
@@ -27,9 +24,13 @@ class ControllerBotoesModoCor:
 
 
     # Método para limpar a cor de preenchimento da figura selecionada
-    def limpar_preenchimento(self, view: Janela, controller: ControllerPrincipal):
+    def limpar_preenchimento(self, view: Janela, controller: ControllerPrincipal, selecao: FerramentaSelecao):
         controller.estado.limpar_cor()
         
+        if selecao.figura_selecionada is not None:
+            selecao.figura_selecionada.preenchimento = None
+        
+        controller.desenho.desenhar_figuras(controller.figuras)
         self.atualiza_botao_sem_preenchimento(view, controller)
         self.atualiza_botao_preenchimento(view, controller)
 

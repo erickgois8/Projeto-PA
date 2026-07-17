@@ -68,6 +68,8 @@ class ControllerPrincipal:
         self.ferramenta_atual = ferramenta
         if cursor is not None:
             self.view.canvas.configure(cursor=cursor)
+        
+        self.ferramenta_selecao.limpar_selecao()
 
     # Usa a ferramenta a partir dos eventos de mouse
     def mouse_pressionado(self, event):

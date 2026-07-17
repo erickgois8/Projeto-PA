@@ -5,6 +5,7 @@ from dataclasses import dataclass, field
 @dataclass
 class Figuras:
         __dados: list[Figura] = field(default_factory=list)
+        buffer: Figura = None
 
         def acessar(self):
             return self.__dados

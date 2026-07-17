@@ -16,7 +16,6 @@ class FerramentaSelecao(Ferramenta):
         self.figura_selecionada = None
         self.ini_x = None
         self.ini_y = None
-        self.buffer = None
 
     # Seleciona a figura que está sob o mouse e armazena suas coordenadas iniciais para o movimento
     def mouse_pressionado(self, event):
@@ -87,27 +86,32 @@ class FerramentaSelecao(Ferramenta):
         
     # Copiar/colar figura selecionada
     def copiar_figura_selecionada(self, event):
-        self.buffer = copy.deepcopy(self.figura_selecionada)
+        self.figuras.buffer = copy.deepcopy(self.figura_selecionada)
 
     def colar_figura_buffer(self, event):
-        if self.buffer is not None:
-            figura_copiada = copy.deepcopy(self.buffer)
+        if self.figuras.buffer is not None:
+            figura_copiada = copy.deepcopy(self.figuras.buffer)
             self.desenho.mover_figura(figura_copiada, 10, 10)
+            figura_copiada.espessura = 2
             self.figuras.adicionar(figura_copiada)
             self.desenho.desenhar_figuras(self.figuras)
 
     # Move a figura selecionada para frente, se houver
     def selecionada_para_frente(self, event):
         self.figuras.mover_para_frente(self.figura_selecionada)
+        self.desenho.desenhar_figuras(self.figuras)
 
     # Move a figura selecionada para trás, se houver
     def selecionada_para_tras(self, event):
         self.figuras.mover_para_tras(self.figura_selecionada)
+        self.desenho.desenhar_figuras(self.figuras)
 
     # Move a figura selecionada para o topo, se houver
     def selecionada_para_topo(self, event):
         self.figuras.mover_para_topo(self.figura_selecionada)
+        self.desenho.desenhar_figuras(self.figuras)
 
     # Move a figura selecionada para o fundo, se houver
     def selecionada_para_fundo(self, event):
         self.figuras.mover_para_fundo(self.figura_selecionada)
+        self.desenho.desenhar_figuras(self.figuras)

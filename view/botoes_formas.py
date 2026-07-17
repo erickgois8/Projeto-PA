@@ -79,5 +79,5 @@ class BotoesFormas:
             bg="#C0C0C0",
             relief=RAISED,
             activebackground="#808080",
-            borde=1)
+            border=1)
         self.botao_poligono.grid(row=2, column=0)

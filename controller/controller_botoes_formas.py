@@ -21,5 +21,8 @@ class ControllerBotoesFormas:
       # Botão triangulo
       view.botoes_formas.botao_triangulo.configure(command=lambda: controller.selecionar_ferramenta(controller.ferramenta_triangulo, "crosshair"))
 
+      # Botão polígono
+      view.botoes_formas.botao_poligono.configure(command=lambda: controller.selecionar_ferramenta(controller.ferramenta_poligono, "crosshair"))
+
    def trocar_cursor(self, cursor):
       return

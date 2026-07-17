@@ -8,6 +8,7 @@ from model.quadrado import Quadrado
 from model.oval import Oval
 from model.circulo import Circulo
 from model.triangulo import Triangulo
+from model.poligono import Poligono
 
 class Desenho:
     def __init__(self, canvas: Canvas):
@@ -41,6 +42,15 @@ class Desenho:
             figura.id = self.canvas.create_polygon(figura.x1, figura.y1, figura.x2, figura.y2, figura.x3, figura.y3,
                                                    outline=figura.borda,fill=figura.preenchimento or "",width=figura.espessura, dash=dash)
 
+        elif isinstance(figura, Poligono):
+            figura.id = self.canvas.create_polygon(
+                *figura.pontos,
+                outline=figura.borda,
+                fill=figura.preenchimento or "",
+                width=figura.espessura,
+                dash=dash,
+            )
+
     def desenhar_figuras(self, figuras: Figuras):
         # Apaga a tela
         self.canvas.delete("all")
@@ -50,7 +60,7 @@ class Desenho:
             self.desenhar_figura(figura)
 
     def mover_figura(self, figura: Figura, dx: int, dy: int):
-        if isinstance(figura, Lapis):
+        if isinstance(figura, (Lapis, Poligono)):
             figura.pontos = [(x + dx, y + dy) for x, y in figura.pontos]
 
         elif isinstance(figura, Triangulo):

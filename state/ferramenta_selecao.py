@@ -21,10 +21,10 @@ class FerramentaSelecao(Ferramenta):
     def mouse_pressionado(self, event):
         self.limpar_selecao()
         raio = 3
-        desenhos = self.canvas.find_overlapping(event.x - raio, event.y - raio, event.x + raio, event.y + raio)
+        ids_figuras = self.canvas.find_overlapping(event.x - raio, event.y - raio, event.x + raio, event.y + raio)
 
-        if desenhos:
-            id_figura_selecionada = desenhos[-1]
+        if ids_figuras:
+            id_figura_selecionada = ids_figuras[-1]
             i = 0
 
             while i < len(self.figuras.acessar()) and self.figura_selecionada is None:
@@ -37,7 +37,10 @@ class FerramentaSelecao(Ferramenta):
             self.ini_y = event.y
 
         else:
-            return
+            self.retangulo_selecao_x1 = event.x
+            self.retangulo_selecao_y1 = event.y
+            self.retangulo_selecao_x2 = event.x
+            self.retangulo_selecao_y2 = event.y
 
     # Move a figura selecionada de acordo com o movimento do mouse
     def mouse_arrastado(self, event):
@@ -49,7 +52,7 @@ class FerramentaSelecao(Ferramenta):
             self.ini_y = event.y
 
         else:
-            return
+            
     
     # Finaliza a movimentação da figura selecionada e reinicia a seleção
     def mouse_solto(self, event):

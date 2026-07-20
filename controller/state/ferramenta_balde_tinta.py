@@ -1,6 +1,6 @@
 from tkinter import *
 from dataclasses import dataclass
-from state.ferramenta import Ferramenta
+from controller.state.ferramenta import Ferramenta
 from model.figuras import Figuras
 from model.estado import Estado
 

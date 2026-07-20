@@ -1,6 +1,6 @@
 from view.janela import Janela
 from controller.controller_principal import ControllerPrincipal
-from state.ferramenta_selecao import FerramentaSelecao
+from controller.state.ferramenta_selecao import FerramentaSelecao
 from tkinter import *
 from tkinter.colorchooser import askcolor
 

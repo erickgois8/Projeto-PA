@@ -3,17 +3,17 @@ from model.figuras import Figuras
 from view.janela import Janela
 from view.desenho import Desenho
 
-from state.ferramenta_lapis import FerramentaLapis
-from state.ferramenta_linha import FerramentaLinha
-from state.ferramenta_retangulo import FerramentaRetangulo
-from state.ferramenta_quadrado import FerramentaQuadrdo
-from state.ferramenta_oval import FerramentaOval
-from state.ferramenta_circulo import FerramentaCirculo
-from state.ferramenta_borracha import FerramentaBorracha
-from state.ferramenta_balde_tinta import FerramentaBaldeTinta
-from state.ferramenta_triangulo import FerramentaTriangulo
-from state.ferramenta_poligono import FerramentaPoligono
-from state.ferramenta_selecao import FerramentaSelecao
+from controller.state.ferramenta_lapis import FerramentaLapis
+from controller.state.ferramenta_linha import FerramentaLinha
+from controller.state.ferramenta_retangulo import FerramentaRetangulo
+from controller.state.ferramenta_quadrado import FerramentaQuadrdo
+from controller.state.ferramenta_oval import FerramentaOval
+from controller.state.ferramenta_circulo import FerramentaCirculo
+from controller.state.ferramenta_borracha import FerramentaBorracha
+from controller.state.ferramenta_balde_tinta import FerramentaBaldeTinta
+from controller.state.ferramenta_triangulo import FerramentaTriangulo
+from controller.state.ferramenta_poligono import FerramentaPoligono
+from controller.state.ferramenta_selecao import FerramentaSelecao
 
 from controller.arquivos import Arquivos
 

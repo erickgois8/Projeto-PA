@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from state.ferramenta import Ferramenta
+from controller.state.ferramenta import Ferramenta
 from model.triangulo import Triangulo
 from model.figuras import Figuras
 from model.estado import Estado
